@@ -1,6 +1,3 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
 require 'loginForm'
 
 describe LoginForm do
@@ -19,6 +16,7 @@ describe LoginForm do
   end
 
   it "should have sex of moteris or vyras" do
+    @lf.sex = "vyras"
     @lf.sex.should match(/Vyras|Moteris/i)
   end
 end

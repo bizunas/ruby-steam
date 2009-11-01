@@ -1,21 +1,25 @@
-# 
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
 require 'account'
 require 'loginForm'
+require 'gameList'
 require 'highline/import'
 
 puts "1. Login\n2.Register\nPlease choose an option:"
 STDOUT.flush
 sel = STDIN.gets.chomp.to_i
 
+#Login
 if sel == 1
   lf = LoginForm.new
   lf.set_username("Please enter your name:")
   lf.set_password("Please enter your password:")
   account = Account.new(lf.name, lf.password)
-  puts "successfully logged in".capitalize
+  if account.get_user
+    puts "successfully logged in".capitalize
+    gl = GameList.new
+    puts gl.games
+  end
+
+#Registration
 elsif sel == 2
   lf = LoginForm.new
   lf.set_username("Please enter your name:")
@@ -33,7 +37,7 @@ elsif sel == 2
       lf.sex = "moteris"
       break
     else
-      puts "bad choice, #{msg}"
+      puts "bad choice, #{msg.downcase}"
       next
     end
   end
@@ -47,6 +51,7 @@ elsif sel == 2
   else
     puts "Please register again: bad password"
   end
+#Bad selection
 else
   puts "bad choice."
 end
