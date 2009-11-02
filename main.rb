@@ -16,7 +16,17 @@ if sel == 1
   if account.get_user
     puts "successfully logged in".capitalize
     gl = GameList.new
-    puts gl.games
+    gl.games.each_index {|i| puts "#{i}.\n#{gl.games[i]}"}
+    STDOUT.flush
+    status = STDIN.gets.chomp.to_i
+    description = STDIN.gets.chomp
+    rating = STDIN.gets.chomp.to_f
+    demo = STDIN.gets.chomp
+    url = STDIN.gets.chomp
+    gl.add_game(status, description, rating, demo, url)
+    
+  else
+    puts "Bad username and/or password. Please try again."
   end
 
 #Registration
