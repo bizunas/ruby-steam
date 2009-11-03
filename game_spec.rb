@@ -1,4 +1,4 @@
-require 'Game'
+require 'game'
 
 describe Game do
   before(:each) do
@@ -19,5 +19,10 @@ describe Game do
 
   it "should have rating from 0.0 to 10.0" do
     @game.rating.should be_between(0.0, 10.0)
+    lambda{Game.new(1,"google", 10, "master", "piece")}.should_not raise_error
+    lambda{Game.new(1,"google", 10.1, "master", "piece")}.should raise_error
+    lambda{Game.new(1,"google", 0, "master", "piece")}.should_not raise_error
+    lambda{Game.new(1,"google", -0.1, "master", "piece")}.should raise_error
   end
+  
 end

@@ -1,11 +1,12 @@
 require 'rubygems'
 require 'spec'
 require 'account'
+require 'accountList'
 require 'loginForm'
 
 describe Account do
   before(:each) do
-    @account = Account.new("Vardenis", "a", "Pavardenis", "vyras")
+    @account = Account.new("Vardenis", "a", "Pavardenis", "vyras", 0)
   end
 
   it "should allow create new account for user" do
@@ -26,9 +27,9 @@ describe Account do
   end
 
   it "should be in DB if user wants to login" do
-    @account.get_user.should be_true
+    @account.get_user.should be_kind_of(Account)
     not_registered_account = Account.new("bbbbbbbbbbbbbb", "cccccccccccc", "asdasd", "Vyras")
-    not_registered_account.get_user.should be_false
+    not_registered_account.get_user.should be_kind_of(nil)
   end
 
 end
