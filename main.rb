@@ -21,61 +21,78 @@ if sel == 1
   puts accounts.get_user(lf.name, lf.password)
   
   #accounts.add_user(lf.name, lf.password)
-  if accounts.get_user(lf.name, lf.password).privileges == 0
+  #Admin
+  if accounts.get_user(lf.name, lf.password) != nil && 
+     accounts.get_user(lf.name, lf.password).privileges == 0
+     
+    acc = accounts.get_user(lf.name, lf.password)
+     
     puts "Successfully logged in as ADMIN\n"
-    puts "Select action you want to do:\n1.\tAdd user.\n2.\tList users"
-    STDOUT.flush
-    sel = STDIN.gets.chomp.to_i
-    #Add user
-    if sel == 1
-      rf = LoginForm.new(nil,nil,1)
-      rf.set_username("Please enter user's name:")
-      while true do
-        rf.set_password("Please enter user's password:")
-        password = ask("Please enter your password again:") { |q| q.echo = "*" }
-        if rf.password == password
-          break
+    while true do 
+      puts "Select action you want to do:\n1.\tAdd user.\n2.\tList users\n0.\tExit"
+      STDOUT.flush
+      sel = STDIN.gets.chomp.to_i
+      #Add user
+      if sel == 1
+        rf = LoginForm.new(nil,nil,1)
+        rf.set_username("Please enter user's name:")
+        while true do
+          rf.set_password("Please enter user's password:")
+          password = ask("Please enter your password again:") { |q| q.echo = "*" }
+          if rf.password == password
+            break
+          end
         end
-      end
-      rf.set_surname("Please enter user's surname:")
-      msg = "Please enter your sex:\n1. Vyras\n2. Moteris\n"
-      puts msg
-      while true do
-        STDOUT.flush
-        sel = STDIN.gets.chomp.to_i
-        if sel == 1
-          lf.sex = "vyras"
-          break
-        elsif sel == 2
-          lf.sex = "moteris"
-          break
-        elsif sel == 0
-          exit "Program terminated."
-        else
-          puts "bad choice, #{msg.downcase}"
-          next
+        rf.set_surname("Please enter user's surname:")
+        msg = "Please enter your sex:\n1. Vyras\n2. Moteris\n"
+        puts msg
+        while true do
+          STDOUT.flush
+          sel = STDIN.gets.chomp.to_i
+          if sel == 1
+            lf.sex = "vyras"
+            break
+          elsif sel == 2
+            lf.sex = "moteris"
+            break
+          elsif sel == 0
+            puts "Program terminated."
+            exit 1
+          else
+            puts "bad choice, #{msg.downcase}"
+            next
+          end
         end
+        rf.set_privileges("Please enter user's privileges(0 - admin, 1 - leecher):")
+        accounts.add_user(rf.name, rf.password, rf.surname, rf.sex, rf.privileges)
+      #List games
+      elsif sel == 2
+        puts GameList.new
+        puts "\n"
+        puts "Add game to Cart ? (enter id./0 to go back to menu)"
+        game = STDIN.gets.chomp.to_i
+        acc.cart.add_game(game)
+        puts acc.cart.to_s
+      elsif sel == 3
+        puts GameList.new
+        puts "\n"
+      #Exit
+      elsif sel == 0
+        break
       end
-      rf.set_privileges("Please enter user's privileges(0 - admin, 1 - leecher):")
-      accounts.add_user(rf.name, rf.password, rf.surname, rf.sex, rf.privileges)
-    #List games
-    elsif sel == 2
-      puts AccountList.new
+      #gl = GameList.new
+      #gl.games.each_index {|i| puts "#{i}.\n#{gl.games[i]}"}
+      #STDOUT.flush
+      #status = STDIN.gets.chomp.to_i
+      #description = STDIN.gets.chomp
+      #rating = STDIN.gets.chomp.to_f
+      #demo = STDIN.gets.chomp
+      #url = STDIN.gets.chomp
+      #gl.add_game(status, description, rating, demo, url)
     end
-    #gl = GameList.new
-    #gl.games.each_index {|i| puts "#{i}.\n#{gl.games[i]}"}
-    #STDOUT.flush
-    #status = STDIN.gets.chomp.to_i
-    #description = STDIN.gets.chomp
-    #rating = STDIN.gets.chomp.to_f
-    #demo = STDIN.gets.chomp
-    #url = STDIN.gets.chomp
-    #gl.add_game(status, description, rating, demo, url)
-    
   else
     puts "Bad username and/or password. Please try again."
   end
-
 #Registration
 elsif sel == 2
   lf = LoginForm.new

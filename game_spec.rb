@@ -25,4 +25,13 @@ describe Game do
     lambda{Game.new(1,"google", -0.1, "master", "piece")}.should raise_error
   end
   
+  it "should let insert Game's status as String" do
+    Game.new("1","google", 10, "master", "piece")
+  end
+  
+  it "should return string of object" do
+    to_string = "------\nStatus:\t0\nDescription:\n\td-d\nRating:\t9.7\nDemo:\tasd\nFull game:\tdsa\n------\n\n"
+    @game.to_s.should be_eql(to_string)
+	end
+  
 end

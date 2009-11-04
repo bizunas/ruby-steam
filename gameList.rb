@@ -25,6 +25,15 @@ class GameList
     save_object
   end
 
+  def to_s
+    ret = "Games list:\n"
+    @games.each_index do |i|
+      ret << "-------#{i+1}--------\n"
+      ret << "#{@games[i].to_s}"
+    end
+    ret
+  end
+  
   private
   Wh = "wh.dat"
 

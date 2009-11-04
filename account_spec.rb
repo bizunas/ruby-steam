@@ -26,10 +26,11 @@ describe Account do
     @account.password.should match(/[0-9A-Fa-f]{32}/i)
   end
 
-  it "should be in DB if user wants to login" do
-    @account.get_user.should be_kind_of(Account)
-    not_registered_account = Account.new("bbbbbbbbbbbbbb", "cccccccccccc", "asdasd", "Vyras")
-    not_registered_account.get_user.should be_kind_of(nil)
+  it "should produce string of account" do
+    @account.to_s.should == "------\nUser name:\t#{@account.name} #{@account.surname}\nSex:\t#{@account.sex}\nAccount ID:\t#{@account.account_id}\nPrivileges:\t#{@account.privileges}\nMoney balance:\t 0\n\n-----\n\n"
   end
-
+  
+  it "should have 0$ when initialized" do
+    @account.money.should == 0
+  end
 end

@@ -2,6 +2,8 @@ require 'account.rb'
 require 'digest/md5'
 
 class AccountList
+  attr_reader :accounts
+  
   def initialize
     @accounts = [Account.new("Admin", "root", "lebowski", "Vyras", 0)]
     load_object
@@ -12,7 +14,6 @@ class AccountList
     save_object
   end
   
-  #make test
   def get_user(name, pass)
     @accounts.each do |acc|
       if logged_in?(acc.name, acc.password, name, Digest::MD5.hexdigest(pass))
@@ -30,6 +31,14 @@ class AccountList
     end
   end
   
+  def to_s
+    ret = "Account list:\n"
+    @accounts.each do |acc|
+      ret << acc.to_s
+    end
+    ret
+  end
+  
   private
   Wh = "acc.dat"
 
@@ -38,7 +47,6 @@ class AccountList
     data = Marshal.dump(@accounts)
     file.write(data)
     file.close
-    #File.open(Wh, 'w') {|f| f.write(Marshal.dump(@games))}
   end
 
   def load_object
@@ -50,16 +58,5 @@ class AccountList
     else
       false
     end
-  end
-  
-  def to_s
-    ret = "Account list:\n"
-    @accounts.each do |acc|
-      ret << "---------------\n"
-      ret << "User name: #{acc.name} #{acc.surname}\n"
-      ret << "Account ID: #{acc.account_id}\n"
-      ret << "Privileges: #{acc.privileges}\n"
-    end
-    ret
   end
 end

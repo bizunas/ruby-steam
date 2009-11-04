@@ -11,10 +11,10 @@ class LoginForm
   end
 
   def set_username(msg, name = nil)
-    if(ARGV.length > 0 && @arg == 0)
+    if name != nil then
+      @name = name
+    elsif(ARGV.length > 0 && @arg == 0) then
       @name = ARGV[0]
-    elsif
-      @name ||= name
     else
       puts "#{msg}"
       STDOUT.flush
@@ -23,10 +23,10 @@ class LoginForm
   end
 
   def set_password(msg, password = nil)
-    if(ARGV.length > 1 && @arg == 0)
+    if password != nil
+      @password = password
+    elsif(ARGV.length > 1 && @arg == 0)
       @password = ARGV[1]
-    elsif
-      @password ||= password
     else
       STDOUT.flush
       @password = ask(msg) { |q| q.echo = "*" }
@@ -34,14 +34,22 @@ class LoginForm
   end
 
   def set_surname(msg, surname = nil)
-    puts "#{msg}"
-    STDOUT.flush
-    @surname = STDIN.gets.chomp
+    if surname != nil
+      @surname = surname
+    else
+      puts "#{msg}"
+      STDOUT.flush
+      @surname = STDIN.gets.chomp
+    end
   end
   
   def set_privileges(msg, priv = nil)
-    puts "#{msg}"
-    STDOUT.flush
-    @privileges = STDIN.gets.chomp
+    if priv != nil
+      @privileges = priv
+    else
+      puts "#{msg}"
+      STDOUT.flush
+      @privileges = STDIN.gets.chomp
+    end
   end
 end
