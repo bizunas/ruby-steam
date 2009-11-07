@@ -17,7 +17,9 @@ class Cart
       end
     end
     if !include
-      @games << gl.games[index-1].clone
+      game = gl.games[index-1].clone
+      game.status = 0
+      @games << game
     end
   end
   

@@ -17,8 +17,31 @@ class Account
     @money = 0
   end
   
+  def make_pos_int(sum)
+    if sum.class == Fixnum
+      if sum < 0 
+        sum = 0
+      end
+    else
+      sum = sum.to_i
+      if sum.to_i < 0 
+        sum = 0
+      end
+    end
+    sum
+  end
+  
   def add_money(sum)
+    sum = make_pos_int(sum)
     @money += sum
+  end
+  
+  def sub_money(sum)
+    sum = make_pos_int(sum)
+    if sum > @money
+      raise "not enough money in account"
+    end
+    @money -= sum
   end
   
   def to_s

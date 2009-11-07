@@ -19,6 +19,12 @@ describe 'Cart' do
     @cart.games.length.should be_eql(1)
   end
   
+  it "should make sure to make status 0 of added game" do
+    length = @cart.games.length
+    @cart.add_game(1)
+    @cart.games[@cart.games.length-1].status.should be_eql(0)
+  end
+  
   it "should return string of object" do
     @cart.add_game(1)
     to_string = "Cart entries:\n"

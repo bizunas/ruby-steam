@@ -5,8 +5,9 @@ class GameList
   
   def initialize
     
-    @games = [Game.new(10, "Half-Life® 2", 8.7, "http://www.google.lt/hl2", "http://www.yahoo.com/hl2"),
-              Game.new(3, "Half-Life® 2 Episode 2", 8.7, "http://www.google.lt/hl2-2", "http://www.yahoo.com/hl2-2"),
+    @games = [Game.new("Half-Life® 2", 5, "Good game", 8.7, "50€", "http://www.google.lt/hl2", "http://www.yahoo.com/hl2"),
+              Game.new("Half-Life® 2 Episode 1", 3, "Better game", 8.6, "72€", "http://www.google.lt/hl2-1", "http://www.yahoo.com/hl2-1"),
+              Game.new("Half-Life® 2 Episode 2", 0, "Best game", 8.7, "59€", "http://www.google.lt/hl2-2", "http://www.yahoo.com/hl2-2"),
     ]
     load_object
     #end
@@ -20,12 +21,23 @@ class GameList
     #file.close
   end
 
-  def add_game(status, description, rating, demo, url)
-    @games << Game.new(status, description, rating, demo, url)
+  def add_game(name, status, description, rating, demo, url)
+    @games << Game.new(name, status, description, rating, demo, url)
     save_object
   end
-
-  def to_s
+  
+  def print_games(wo_zero = false)
+    ret = "Games list:\n"
+    @games.each_index do |i|
+      if !(wo_zero && @games[i].status == 0)
+        ret << "-------#{i+1}--------\n"
+        ret << "#{@games[i].to_s}"
+      end
+    end
+    ret
+  end
+  
+  def to_s(wo_zero = false)
     ret = "Games list:\n"
     @games.each_index do |i|
       ret << "-------#{i+1}--------\n"
@@ -35,10 +47,10 @@ class GameList
   end
   
   private
-  Wh = "wh.dat"
+  So = "wh.dat"
 
   def save_object
-    file = File.new(Wh, 'w')
+    file = File.new(So, 'w')
     data = Marshal.dump(@games)
     file.write(data)
     file.close
@@ -46,9 +58,9 @@ class GameList
   end
 
   def load_object
-    if File.exists? Wh
-      file = File.open(Wh, 'r')
-      data = file.read(File.size(Wh))
+    if File.exists? So
+      file = File.open(So, 'r')
+      data = file.read(File.size(So))
       @games = Marshal.load(data)
       file.close
     else

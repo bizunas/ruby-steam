@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Wed Nov 04 16:26:01 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Sat Nov 07 16:03:29 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -598,68 +598,68 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked0"><a name="line1"></a> 1 require 'account.rb'
-</span><span class="marked1"><a name="line2"></a> 2 require 'digest/md5'
-</span><span class="inferred0"><a name="line3"></a> 3 
-</span><span class="marked1"><a name="line4"></a> 4 class AccountList
-</span><span class="marked0"><a name="line5"></a> 5   attr_reader :accounts
-</span><span class="inferred1"><a name="line6"></a> 6   
-</span><span class="marked0"><a name="line7"></a> 7   def initialize
-</span><span class="marked1"><a name="line8"></a> 8     @accounts = [Account.new(&quot;Admin&quot;, &quot;root&quot;, &quot;lebowski&quot;, &quot;Vyras&quot;, 0)]
-</span><span class="marked0"><a name="line9"></a> 9     load_object
-</span><span class="inferred1"><a name="line10"></a>10   end
-</span><span class="inferred0"><a name="line11"></a>11 
-</span><span class="marked1"><a name="line12"></a>12   def add_user(name, password, surname, sex, privileges)
-</span><span class="uncovered0"><a name="line13"></a>13     @accounts &lt;&lt; Account.new(name, password, surname, sex, privileges)
-</span><span class="uncovered1"><a name="line14"></a>14     save_object
-</span><span class="uncovered0"><a name="line15"></a>15   end
-</span><span class="inferred1"><a name="line16"></a>16   
-</span><span class="marked0"><a name="line17"></a>17   def get_user(name, pass)
-</span><span class="marked1"><a name="line18"></a>18     @accounts.each do |acc|
-</span><span class="marked0"><a name="line19"></a>19       if logged_in?(acc.name, acc.password, name, Digest::MD5.hexdigest(pass))
-</span><span class="marked1"><a name="line20"></a>20         return acc
-</span><span class="inferred0"><a name="line21"></a>21       end
-</span><span class="inferred1"><a name="line22"></a>22     end
-</span><span class="marked0"><a name="line23"></a>23     return nil
-</span><span class="inferred1"><a name="line24"></a>24   end
-</span><span class="inferred0"><a name="line25"></a>25 
-</span><span class="marked1"><a name="line26"></a>26   def logged_in?(user_expected, pass_expected, user_actual, pass_actual)
-</span><span class="marked0"><a name="line27"></a>27     if user_expected == user_actual &amp;&amp; pass_expected == pass_actual
-</span><span class="marked1"><a name="line28"></a>28       true
-</span><span class="inferred0"><a name="line29"></a>29     else
-</span><span class="marked1"><a name="line30"></a>30       false
-</span><span class="inferred0"><a name="line31"></a>31     end
-</span><span class="marked1"><a name="line32"></a>32   end
-</span><span class="inferred0"><a name="line33"></a>33   
-</span><span class="marked1"><a name="line34"></a>34   def to_s
-</span><span class="marked0"><a name="line35"></a>35     ret = &quot;Account list:\n&quot;
-</span><span class="marked1"><a name="line36"></a>36     @accounts.each do |acc|
-</span><span class="marked0"><a name="line37"></a>37       ret &lt;&lt; acc.to_s
-</span><span class="inferred1"><a name="line38"></a>38     end
-</span><span class="marked0"><a name="line39"></a>39     ret
-</span><span class="inferred1"><a name="line40"></a>40   end
-</span><span class="inferred0"><a name="line41"></a>41   
-</span><span class="marked1"><a name="line42"></a>42   private
-</span><span class="marked0"><a name="line43"></a>43   Wh = &quot;acc.dat&quot;
-</span><span class="inferred1"><a name="line44"></a>44 
-</span><span class="marked0"><a name="line45"></a>45   def save_object
-</span><span class="uncovered1"><a name="line46"></a>46     file = File.new(Wh, 'w')
-</span><span class="uncovered0"><a name="line47"></a>47     data = Marshal.dump(@accounts)
-</span><span class="uncovered1"><a name="line48"></a>48     file.write(data)
-</span><span class="uncovered0"><a name="line49"></a>49     file.close
-</span><span class="uncovered1"><a name="line50"></a>50   end
-</span><span class="inferred0"><a name="line51"></a>51 
-</span><span class="marked1"><a name="line52"></a>52   def load_object
-</span><span class="marked0"><a name="line53"></a>53     if File.exists? Wh
-</span><span class="uncovered1"><a name="line54"></a>54       file = File.open(Wh, 'r')
-</span><span class="uncovered0"><a name="line55"></a>55       data = file.read(File.size(Wh))
-</span><span class="uncovered1"><a name="line56"></a>56       @accounts = Marshal.load(data)
-</span><span class="uncovered0"><a name="line57"></a>57       file.close
-</span><span class="inferred1"><a name="line58"></a>58     else
-</span><span class="marked0"><a name="line59"></a>59       false
-</span><span class="inferred1"><a name="line60"></a>60     end
-</span><span class="marked0"><a name="line61"></a>61   end
-</span><span class="inferred1"><a name="line62"></a>62 end
+<pre><span class="marked1"><a name="line1"></a> 1 require 'account.rb'
+</span><span class="marked0"><a name="line2"></a> 2 require 'digest/md5'
+</span><span class="inferred1"><a name="line3"></a> 3 
+</span><span class="marked0"><a name="line4"></a> 4 class AccountList
+</span><span class="marked1"><a name="line5"></a> 5   attr_reader :accounts
+</span><span class="inferred0"><a name="line6"></a> 6   
+</span><span class="marked1"><a name="line7"></a> 7   def initialize
+</span><span class="marked0"><a name="line8"></a> 8     @accounts = [Account.new(&quot;Admin&quot;, &quot;root&quot;, &quot;lebowski&quot;, &quot;Vyras&quot;, 0)]
+</span><span class="marked1"><a name="line9"></a> 9     load_object
+</span><span class="inferred0"><a name="line10"></a>10   end
+</span><span class="inferred1"><a name="line11"></a>11 
+</span><span class="marked0"><a name="line12"></a>12   def add_user(name, password, surname, sex, privileges)
+</span><span class="uncovered1"><a name="line13"></a>13     @accounts &lt;&lt; Account.new(name, password, surname, sex, privileges)
+</span><span class="uncovered0"><a name="line14"></a>14     save_object
+</span><span class="uncovered1"><a name="line15"></a>15   end
+</span><span class="inferred0"><a name="line16"></a>16   
+</span><span class="marked1"><a name="line17"></a>17   def get_user(name, pass)
+</span><span class="marked0"><a name="line18"></a>18     @accounts.each do |acc|
+</span><span class="marked1"><a name="line19"></a>19       if logged_in?(acc.name, acc.password, name, Digest::MD5.hexdigest(pass))
+</span><span class="marked0"><a name="line20"></a>20         return acc
+</span><span class="inferred1"><a name="line21"></a>21       end
+</span><span class="inferred0"><a name="line22"></a>22     end
+</span><span class="marked1"><a name="line23"></a>23     return nil
+</span><span class="inferred0"><a name="line24"></a>24   end
+</span><span class="inferred1"><a name="line25"></a>25 
+</span><span class="marked0"><a name="line26"></a>26   def logged_in?(user_expected, pass_expected, user_actual, pass_actual)
+</span><span class="marked1"><a name="line27"></a>27     if user_expected == user_actual &amp;&amp; pass_expected == pass_actual
+</span><span class="marked0"><a name="line28"></a>28       true
+</span><span class="inferred1"><a name="line29"></a>29     else
+</span><span class="marked0"><a name="line30"></a>30       false
+</span><span class="inferred1"><a name="line31"></a>31     end
+</span><span class="marked0"><a name="line32"></a>32   end
+</span><span class="inferred1"><a name="line33"></a>33   
+</span><span class="marked0"><a name="line34"></a>34   def to_s
+</span><span class="marked1"><a name="line35"></a>35     ret = &quot;Account list:\n&quot;
+</span><span class="marked0"><a name="line36"></a>36     @accounts.each do |acc|
+</span><span class="marked1"><a name="line37"></a>37       ret &lt;&lt; acc.to_s
+</span><span class="inferred0"><a name="line38"></a>38     end
+</span><span class="marked1"><a name="line39"></a>39     ret
+</span><span class="inferred0"><a name="line40"></a>40   end
+</span><span class="inferred1"><a name="line41"></a>41   
+</span><span class="marked0"><a name="line42"></a>42   private
+</span><span class="marked1"><a name="line43"></a>43   Wh = &quot;acc.dat&quot;
+</span><span class="inferred0"><a name="line44"></a>44 
+</span><span class="marked1"><a name="line45"></a>45   def save_object
+</span><span class="uncovered0"><a name="line46"></a>46     file = File.new(Wh, 'w')
+</span><span class="uncovered1"><a name="line47"></a>47     data = Marshal.dump(@accounts)
+</span><span class="uncovered0"><a name="line48"></a>48     file.write(data)
+</span><span class="uncovered1"><a name="line49"></a>49     file.close
+</span><span class="uncovered0"><a name="line50"></a>50   end
+</span><span class="inferred1"><a name="line51"></a>51 
+</span><span class="marked0"><a name="line52"></a>52   def load_object
+</span><span class="marked1"><a name="line53"></a>53     if File.exists? Wh
+</span><span class="uncovered0"><a name="line54"></a>54       file = File.open(Wh, 'r')
+</span><span class="uncovered1"><a name="line55"></a>55       data = file.read(File.size(Wh))
+</span><span class="uncovered0"><a name="line56"></a>56       @accounts = Marshal.load(data)
+</span><span class="uncovered1"><a name="line57"></a>57       file.close
+</span><span class="inferred0"><a name="line58"></a>58     else
+</span><span class="marked1"><a name="line59"></a>59       false
+</span><span class="inferred0"><a name="line60"></a>60     end
+</span><span class="marked1"><a name="line61"></a>61   end
+</span><span class="inferred0"><a name="line62"></a>62 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

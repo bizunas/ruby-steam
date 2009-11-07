@@ -23,8 +23,26 @@ describe GameList do
     end
   end
   
-  it "should be able to add new game" do
-    
+  it "should be able to print games from the list with filter of status 0" do
+    to_string = "Games list:\n"
+    @game_list.games.each_index do |i|
+      if !(true && @game_list.games[i].status == 0)
+        to_string << "-------#{i+1}--------\n"
+        to_string << "#{@game_list.games[i].to_s}"
+      end
+    end
+    @game_list.print_games(true).should be_eql(to_string)
+  end
+  
+  it "should be able to print all games from the list without filter of status 0" do
+    to_string = "Games list:\n"
+    @game_list.games.each_index do |i|
+      if !(false && @game_list.games[i].status == 0)
+        to_string << "-------#{i+1}--------\n"
+        to_string << "#{@game_list.games[i].to_s}"
+      end
+    end
+    @game_list.print_games(false).should be_eql(to_string)
   end
   
   it "should return string of object" do

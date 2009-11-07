@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Wed Nov 04 16:26:01 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Sat Nov 07 16:03:29 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -598,46 +598,46 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked0"><a name="line1"></a> 1 require 'rubygems'
-</span><span class="marked1"><a name="line2"></a> 2 require 'spec'
-</span><span class="marked0"><a name="line3"></a> 3 require 'accountList'
-</span><span class="marked1"><a name="line4"></a> 4 require 'loginForm'
-</span><span class="inferred0"><a name="line5"></a> 5 
-</span><span class="marked1"><a name="line6"></a> 6 describe AccountList do
-</span><span class="marked0"><a name="line7"></a> 7   before(:each) do
-</span><span class="marked1"><a name="line8"></a> 8     @account_list = AccountList.new
-</span><span class="marked0"><a name="line9"></a> 9     @accounts = @account_list.accounts
-</span><span class="inferred1"><a name="line10"></a>10   end
-</span><span class="inferred0"><a name="line11"></a>11 
-</span><span class="marked1"><a name="line12"></a>12   it &quot;should have Administrator in accounts&quot; do
-</span><span class="marked0"><a name="line13"></a>13     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should_not be_nil
-</span><span class="marked1"><a name="line14"></a>14     @accounts.should include(@account_list.get_user(&quot;Admin&quot;, &quot;root&quot;))
-</span><span class="inferred0"><a name="line15"></a>15   end
-</span><span class="inferred1"><a name="line16"></a>16   
-</span><span class="marked0"><a name="line17"></a>17   it &quot;should be in DB if user wants to login&quot; do
-</span><span class="marked1"><a name="line18"></a>18     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should be_kind_of(Account)
-</span><span class="inferred0"><a name="line19"></a>19   end
-</span><span class="inferred1"><a name="line20"></a>20   
-</span><span class="marked0"><a name="line21"></a>21   it &quot;should return nil object if there is no user in DB&quot; do
-</span><span class="marked1"><a name="line22"></a>22 	not_registered_account = Account.new(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;, &quot;asdasd&quot;, &quot;Vyras&quot;)
-</span><span class="marked0"><a name="line23"></a>23     @accounts.should_not include(not_registered_account)
-</span><span class="marked1"><a name="line24"></a>24 	@account_list.get_user(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;).should be_nil
-</span><span class="inferred0"><a name="line25"></a>25   end
-</span><span class="inferred1"><a name="line26"></a>26   
-</span><span class="marked0"><a name="line27"></a>27   it &quot;should have same name and password as in DB&quot; do
-</span><span class="marked1"><a name="line28"></a>28     @account_list.logged_in?(&quot;google&quot;,&quot;asd&quot;,&quot;google&quot;,&quot;asd&quot;).should be_true
-</span><span class="marked0"><a name="line29"></a>29     @account_list.logged_in?(&quot;vardenis&quot;, &quot;mmm&quot;, &quot;pavardenis&quot;, &quot;mmm&quot;).should be_false
-</span><span class="inferred1"><a name="line30"></a>30   end
-</span><span class="inferred0"><a name="line31"></a>31   
-</span><span class="marked1"><a name="line32"></a>32   it &quot;should return string of object&quot; do
-</span><span class="marked0"><a name="line33"></a>33     to_string = &quot;Account list:\n&quot;
-</span><span class="marked1"><a name="line34"></a>34     @accounts.each do |acc|
-</span><span class="marked0"><a name="line35"></a>35       to_string &lt;&lt; acc.to_s
-</span><span class="inferred1"><a name="line36"></a>36 	end
-</span><span class="inferred0"><a name="line37"></a>37   
-</span><span class="marked1"><a name="line38"></a>38 	@account_list.to_s.should be_eql(to_string)
-</span><span class="inferred0"><a name="line39"></a>39   end
-</span><span class="inferred1"><a name="line40"></a>40 end
+<pre><span class="marked1"><a name="line1"></a> 1 require 'rubygems'
+</span><span class="marked0"><a name="line2"></a> 2 require 'spec'
+</span><span class="marked1"><a name="line3"></a> 3 require 'accountList'
+</span><span class="marked0"><a name="line4"></a> 4 require 'loginForm'
+</span><span class="inferred1"><a name="line5"></a> 5 
+</span><span class="marked0"><a name="line6"></a> 6 describe AccountList do
+</span><span class="marked1"><a name="line7"></a> 7   before(:each) do
+</span><span class="marked0"><a name="line8"></a> 8     @account_list = AccountList.new
+</span><span class="marked1"><a name="line9"></a> 9     @accounts = @account_list.accounts
+</span><span class="inferred0"><a name="line10"></a>10   end
+</span><span class="inferred1"><a name="line11"></a>11 
+</span><span class="marked0"><a name="line12"></a>12   it &quot;should have Administrator in accounts&quot; do
+</span><span class="marked1"><a name="line13"></a>13     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should_not be_nil
+</span><span class="marked0"><a name="line14"></a>14     @accounts.should include(@account_list.get_user(&quot;Admin&quot;, &quot;root&quot;))
+</span><span class="inferred1"><a name="line15"></a>15   end
+</span><span class="inferred0"><a name="line16"></a>16   
+</span><span class="marked1"><a name="line17"></a>17   it &quot;should be in DB if user wants to login&quot; do
+</span><span class="marked0"><a name="line18"></a>18     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should be_kind_of(Account)
+</span><span class="inferred1"><a name="line19"></a>19   end
+</span><span class="inferred0"><a name="line20"></a>20   
+</span><span class="marked1"><a name="line21"></a>21   it &quot;should return nil object if there is no user in DB&quot; do
+</span><span class="marked0"><a name="line22"></a>22 	not_registered_account = Account.new(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;, &quot;asdasd&quot;, &quot;Vyras&quot;)
+</span><span class="marked1"><a name="line23"></a>23     @accounts.should_not include(not_registered_account)
+</span><span class="marked0"><a name="line24"></a>24 	@account_list.get_user(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;).should be_nil
+</span><span class="inferred1"><a name="line25"></a>25   end
+</span><span class="inferred0"><a name="line26"></a>26   
+</span><span class="marked1"><a name="line27"></a>27   it &quot;should have same name and password as in DB&quot; do
+</span><span class="marked0"><a name="line28"></a>28     @account_list.logged_in?(&quot;google&quot;,&quot;asd&quot;,&quot;google&quot;,&quot;asd&quot;).should be_true
+</span><span class="marked1"><a name="line29"></a>29     @account_list.logged_in?(&quot;vardenis&quot;, &quot;mmm&quot;, &quot;pavardenis&quot;, &quot;mmm&quot;).should be_false
+</span><span class="inferred0"><a name="line30"></a>30   end
+</span><span class="inferred1"><a name="line31"></a>31   
+</span><span class="marked0"><a name="line32"></a>32   it &quot;should return string of object&quot; do
+</span><span class="marked1"><a name="line33"></a>33     to_string = &quot;Account list:\n&quot;
+</span><span class="marked0"><a name="line34"></a>34     @accounts.each do |acc|
+</span><span class="marked1"><a name="line35"></a>35       to_string &lt;&lt; acc.to_s
+</span><span class="inferred0"><a name="line36"></a>36 	end
+</span><span class="inferred1"><a name="line37"></a>37   
+</span><span class="marked0"><a name="line38"></a>38 	@account_list.to_s.should be_eql(to_string)
+</span><span class="inferred1"><a name="line39"></a>39   end
+</span><span class="inferred0"><a name="line40"></a>40 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

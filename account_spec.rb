@@ -33,4 +33,64 @@ describe Account do
   it "should have 0$ when initialized" do
     @account.money.should == 0
   end
+  
+  it "should be able to add money to account" do
+    lambda {
+      @account.add_money(50)
+    }.should change(@account, :money).from(@account.money).to(@account.money + 50)
+    
+    lambda {
+      @account.add_money(85)
+    }.should change(@account, :money).from(@account.money).to(@account.money + 85)
+  end
+  
+  it "should not let add negative money" do
+    lambda {
+      @account.add_money(-10)
+    }.should_not change(@account, :money)
+  end
+  
+  it "should be able to subtract money from account" do
+    @account.add_money(100)
+    lambda {
+      @account.sub_money(50)
+    }.should change(@account, :money).from(@account.money).to(@account.money - 50)
+    
+    @account.add_money(100)
+    lambda {
+      @account.sub_money(85)
+    }.should change(@account, :money).from(@account.money).to(@account.money - 85)
+  end
+  
+  it "should not let add negative money" do
+    lambda {
+      @account.add_money(-10)
+    }.should_not change(@account, :money)
+  end
+  
+  it "should raise error if there is no money in account to buy game" do
+    lambda {
+      @account.sub_money(10)
+    }.should raise_error
+  end
+  
+  it "should let add/subtract money passing integer as string" do
+    lambda {
+      @account.add_money("100")
+    }.should change(@account, :money).from(@account.money).to(@account.money + 100)
+    
+    @account.add_money(100)
+    
+    lambda {
+      @account.sub_money("100")
+    }.should change(@account, :money).from(@account.money).to(@account.money - 100)
+    
+    @account.make_pos_int("100").should be_eql(100)
+  end
+  
+  it "should not let add negative money if it is string" do
+    lambda {
+      @account.add_money("-10")
+    }.should_not change(@account, :money)
+  end
 end

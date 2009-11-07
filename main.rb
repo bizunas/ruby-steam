@@ -67,7 +67,8 @@ if sel == 1
         accounts.add_user(rf.name, rf.password, rf.surname, rf.sex, rf.privileges)
       #List games
       elsif sel == 2
-        puts GameList.new
+        gl = GameList.new
+        puts gl.print_games(true)
         puts "\n"
         puts "Add game to Cart ? (enter id./0 to go back to menu)"
         game = STDIN.gets.chomp.to_i

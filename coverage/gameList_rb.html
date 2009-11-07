@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Wed Nov 04 16:26:04 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Sat Nov 07 16:03:30 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,24 +571,24 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='gameList_rb.html'>gameList.rb</a>
         </td>
-      <td class='lines_total'><tt>58</tt>
+      <td class='lines_total'><tt>70</tt>
         </td>
-      <td class='lines_code'><tt>40</tt>
+      <td class='lines_code'><tt>51</tt>
         </td>
-      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>77.6%</tt>
+      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>81.4%</tt>
               &nbsp;</td>
-            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='78'/>
-                  <td class='uncovered' width='22'/>
+            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='81'/>
+                  <td class='uncovered' width='19'/>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
         </td>
-      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_code'>70.0%</tt>
+      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_code'>76.5%</tt>
               &nbsp;</td>
-            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='70'/>
-                  <td class='uncovered' width='30'/>
+            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='76'/>
+                  <td class='uncovered' width='24'/>
                   </tr>
                 </table>
               </td>
@@ -598,64 +598,76 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked1"><a name="line1"></a> 1 require 'game'
-</span><span class="inferred0"><a name="line2"></a> 2 
-</span><span class="marked1"><a name="line3"></a> 3 class GameList
-</span><span class="marked0"><a name="line4"></a> 4   attr_reader :games
-</span><span class="inferred1"><a name="line5"></a> 5   
-</span><span class="marked0"><a name="line6"></a> 6   def initialize
-</span><span class="inferred1"><a name="line7"></a> 7     
-</span><span class="marked0"><a name="line8"></a> 8     @games = [Game.new(10, &quot;Half-Life® 2&quot;, 8.7, &quot;http://www.google.lt/hl2&quot;, &quot;http://www.yahoo.com/hl2&quot;),
-</span><span class="marked1"><a name="line9"></a> 9               Game.new(3, &quot;Half-Life® 2 Episode 2&quot;, 8.7, &quot;http://www.google.lt/hl2-2&quot;, &quot;http://www.yahoo.com/hl2-2&quot;),
-</span><span class="inferred0"><a name="line10"></a>10     ]
-</span><span class="marked1"><a name="line11"></a>11     load_object
-</span><span class="inferred0"><a name="line12"></a>12     #end
-</span><span class="inferred1"><a name="line13"></a>13 
-</span><span class="inferred0"><a name="line14"></a>14     #file = File.new(&quot;games.dat&quot;, &quot;r&quot;)
-</span><span class="inferred1"><a name="line15"></a>15     #while (line = file.gets)
-</span><span class="inferred0"><a name="line16"></a>16     #  line = line.chomp.split(/\|/)
-</span><span class="inferred1"><a name="line17"></a>17     #  @games &lt;&lt; Game.new(line[0], line[1], line[2], line[3], line[4])
-</span><span class="inferred0"><a name="line18"></a>18     #end
-</span><span class="inferred1"><a name="line19"></a>19     #puts @games.inspect()
-</span><span class="inferred0"><a name="line20"></a>20     #file.close
-</span><span class="inferred1"><a name="line21"></a>21   end
-</span><span class="inferred0"><a name="line22"></a>22 
-</span><span class="marked1"><a name="line23"></a>23   def add_game(status, description, rating, demo, url)
-</span><span class="uncovered0"><a name="line24"></a>24     @games &lt;&lt; Game.new(status, description, rating, demo, url)
-</span><span class="uncovered1"><a name="line25"></a>25     save_object
-</span><span class="uncovered0"><a name="line26"></a>26   end
-</span><span class="inferred1"><a name="line27"></a>27 
-</span><span class="marked0"><a name="line28"></a>28   def to_s
-</span><span class="marked1"><a name="line29"></a>29     ret = &quot;Games list:\n&quot;
-</span><span class="marked0"><a name="line30"></a>30     @games.each_index do |i|
-</span><span class="marked1"><a name="line31"></a>31       ret &lt;&lt; &quot;-------#{i+1}--------\n&quot;
-</span><span class="marked0"><a name="line32"></a>32       ret &lt;&lt; &quot;#{@games[i].to_s}&quot;
-</span><span class="inferred1"><a name="line33"></a>33     end
-</span><span class="marked0"><a name="line34"></a>34     ret
-</span><span class="inferred1"><a name="line35"></a>35   end
-</span><span class="inferred0"><a name="line36"></a>36   
-</span><span class="marked1"><a name="line37"></a>37   private
-</span><span class="marked0"><a name="line38"></a>38   Wh = &quot;wh.dat&quot;
-</span><span class="inferred1"><a name="line39"></a>39 
-</span><span class="marked0"><a name="line40"></a>40   def save_object
-</span><span class="uncovered1"><a name="line41"></a>41     file = File.new(Wh, 'w')
-</span><span class="uncovered0"><a name="line42"></a>42     data = Marshal.dump(@games)
-</span><span class="uncovered1"><a name="line43"></a>43     file.write(data)
-</span><span class="uncovered0"><a name="line44"></a>44     file.close
-</span><span class="uncovered1"><a name="line45"></a>45     #File.open(Wh, 'w') {|f| f.write(Marshal.dump(@games))}
-</span><span class="uncovered0"><a name="line46"></a>46   end
-</span><span class="inferred1"><a name="line47"></a>47 
-</span><span class="marked0"><a name="line48"></a>48   def load_object
-</span><span class="marked1"><a name="line49"></a>49     if File.exists? Wh
-</span><span class="uncovered0"><a name="line50"></a>50       file = File.open(Wh, 'r')
-</span><span class="uncovered1"><a name="line51"></a>51       data = file.read(File.size(Wh))
-</span><span class="uncovered0"><a name="line52"></a>52       @games = Marshal.load(data)
-</span><span class="uncovered1"><a name="line53"></a>53       file.close
-</span><span class="inferred0"><a name="line54"></a>54     else
-</span><span class="marked1"><a name="line55"></a>55       false
-</span><span class="inferred0"><a name="line56"></a>56     end
-</span><span class="marked1"><a name="line57"></a>57   end
-</span><span class="inferred0"><a name="line58"></a>58 end
+<pre><span class="marked0"><a name="line1"></a> 1 require 'game'
+</span><span class="inferred1"><a name="line2"></a> 2 
+</span><span class="marked0"><a name="line3"></a> 3 class GameList
+</span><span class="marked1"><a name="line4"></a> 4   attr_reader :games
+</span><span class="inferred0"><a name="line5"></a> 5   
+</span><span class="marked1"><a name="line6"></a> 6   def initialize
+</span><span class="inferred0"><a name="line7"></a> 7     
+</span><span class="marked1"><a name="line8"></a> 8     @games = [Game.new(&quot;Half-Life® 2&quot;, 5, &quot;Good game&quot;, 8.7, &quot;50€&quot;, &quot;http://www.google.lt/hl2&quot;, &quot;http://www.yahoo.com/hl2&quot;),
+</span><span class="marked0"><a name="line9"></a> 9               Game.new(&quot;Half-Life® 2 Episode 1&quot;, 3, &quot;Better game&quot;, 8.6, &quot;72€&quot;, &quot;http://www.google.lt/hl2-1&quot;, &quot;http://www.yahoo.com/hl2-1&quot;),
+</span><span class="marked1"><a name="line10"></a>10               Game.new(&quot;Half-Life® 2 Episode 2&quot;, 0, &quot;Best game&quot;, 8.7, &quot;59€&quot;, &quot;http://www.google.lt/hl2-2&quot;, &quot;http://www.yahoo.com/hl2-2&quot;),
+</span><span class="inferred0"><a name="line11"></a>11     ]
+</span><span class="marked1"><a name="line12"></a>12     load_object
+</span><span class="inferred0"><a name="line13"></a>13     #end
+</span><span class="inferred1"><a name="line14"></a>14 
+</span><span class="inferred0"><a name="line15"></a>15     #file = File.new(&quot;games.dat&quot;, &quot;r&quot;)
+</span><span class="inferred1"><a name="line16"></a>16     #while (line = file.gets)
+</span><span class="inferred0"><a name="line17"></a>17     #  line = line.chomp.split(/\|/)
+</span><span class="inferred1"><a name="line18"></a>18     #  @games &lt;&lt; Game.new(line[0], line[1], line[2], line[3], line[4])
+</span><span class="inferred0"><a name="line19"></a>19     #end
+</span><span class="inferred1"><a name="line20"></a>20     #puts @games.inspect()
+</span><span class="inferred0"><a name="line21"></a>21     #file.close
+</span><span class="inferred1"><a name="line22"></a>22   end
+</span><span class="inferred0"><a name="line23"></a>23 
+</span><span class="marked1"><a name="line24"></a>24   def add_game(name, status, description, rating, demo, url)
+</span><span class="uncovered0"><a name="line25"></a>25     @games &lt;&lt; Game.new(name, status, description, rating, demo, url)
+</span><span class="uncovered1"><a name="line26"></a>26     save_object
+</span><span class="uncovered0"><a name="line27"></a>27   end
+</span><span class="inferred1"><a name="line28"></a>28   
+</span><span class="marked0"><a name="line29"></a>29   def print_games(wo_zero = false)
+</span><span class="marked1"><a name="line30"></a>30     ret = &quot;Games list:\n&quot;
+</span><span class="marked0"><a name="line31"></a>31     @games.each_index do |i|
+</span><span class="marked1"><a name="line32"></a>32       if !(wo_zero &amp;&amp; @games[i].status == 0)
+</span><span class="marked0"><a name="line33"></a>33         ret &lt;&lt; &quot;-------#{i+1}--------\n&quot;
+</span><span class="marked1"><a name="line34"></a>34         ret &lt;&lt; &quot;#{@games[i].to_s}&quot;
+</span><span class="inferred0"><a name="line35"></a>35       end
+</span><span class="inferred1"><a name="line36"></a>36     end
+</span><span class="marked0"><a name="line37"></a>37     ret
+</span><span class="inferred1"><a name="line38"></a>38   end
+</span><span class="inferred0"><a name="line39"></a>39   
+</span><span class="marked1"><a name="line40"></a>40   def to_s(wo_zero = false)
+</span><span class="marked0"><a name="line41"></a>41     ret = &quot;Games list:\n&quot;
+</span><span class="marked1"><a name="line42"></a>42     @games.each_index do |i|
+</span><span class="marked0"><a name="line43"></a>43       ret &lt;&lt; &quot;-------#{i+1}--------\n&quot;
+</span><span class="marked1"><a name="line44"></a>44       ret &lt;&lt; &quot;#{@games[i].to_s}&quot;
+</span><span class="inferred0"><a name="line45"></a>45     end
+</span><span class="marked1"><a name="line46"></a>46     ret
+</span><span class="inferred0"><a name="line47"></a>47   end
+</span><span class="inferred1"><a name="line48"></a>48   
+</span><span class="marked0"><a name="line49"></a>49   private
+</span><span class="marked1"><a name="line50"></a>50   So = &quot;wh.dat&quot;
+</span><span class="inferred0"><a name="line51"></a>51 
+</span><span class="marked1"><a name="line52"></a>52   def save_object
+</span><span class="uncovered0"><a name="line53"></a>53     file = File.new(So, 'w')
+</span><span class="uncovered1"><a name="line54"></a>54     data = Marshal.dump(@games)
+</span><span class="uncovered0"><a name="line55"></a>55     file.write(data)
+</span><span class="uncovered1"><a name="line56"></a>56     file.close
+</span><span class="uncovered0"><a name="line57"></a>57     #File.open(Wh, 'w') {|f| f.write(Marshal.dump(@games))}
+</span><span class="uncovered1"><a name="line58"></a>58   end
+</span><span class="inferred0"><a name="line59"></a>59 
+</span><span class="marked1"><a name="line60"></a>60   def load_object
+</span><span class="marked0"><a name="line61"></a>61     if File.exists? So
+</span><span class="uncovered1"><a name="line62"></a>62       file = File.open(So, 'r')
+</span><span class="uncovered0"><a name="line63"></a>63       data = file.read(File.size(So))
+</span><span class="uncovered1"><a name="line64"></a>64       @games = Marshal.load(data)
+</span><span class="uncovered0"><a name="line65"></a>65       file.close
+</span><span class="inferred1"><a name="line66"></a>66     else
+</span><span class="marked0"><a name="line67"></a>67       false
+</span><span class="inferred1"><a name="line68"></a>68     end
+</span><span class="marked0"><a name="line69"></a>69   end
+</span><span class="inferred1"><a name="line70"></a>70 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>
