@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sat Nov 07 16:03:30 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Sun Nov 08 18:37:21 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,9 +571,9 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='game_spec_rb.html'>game_spec.rb</a>
         </td>
-      <td class='lines_total'><tt>62</tt>
+      <td class='lines_total'><tt>71</tt>
         </td>
-      <td class='lines_code'><tt>52</tt>
+      <td class='lines_code'><tt>58</tt>
         </td>
       <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
@@ -602,7 +602,7 @@ span.run100 {
 </span><span class="inferred0"><a name="line2"></a> 2 
 </span><span class="marked1"><a name="line3"></a> 3 describe Game do
 </span><span class="marked0"><a name="line4"></a> 4   before(:each) do
-</span><span class="marked1"><a name="line5"></a> 5     @game = Game.new(&quot;H-L&quot;, 0,&quot;d-d&quot;,9.7, &quot;50ˆ&quot;,&quot;asd&quot;,&quot;dsa&quot;)
+</span><span class="marked1"><a name="line5"></a> 5     @game = Game.new(&quot;Half-Life® 2&quot;, 0,&quot;d-d&quot;,9.7, &quot;50ˆ&quot;,&quot;asd&quot;,&quot;dsa&quot;)
 </span><span class="inferred0"><a name="line6"></a> 6   end
 </span><span class="inferred1"><a name="line7"></a> 7 
 </span><span class="marked0"><a name="line8"></a> 8   it &quot;should have status of type Fixnum&quot; do
@@ -619,47 +619,56 @@ span.run100 {
 </span><span class="inferred1"><a name="line19"></a>19 
 </span><span class="marked0"><a name="line20"></a>20   it &quot;should have rating from 0.0 to 10.0&quot; do
 </span><span class="marked1"><a name="line21"></a>21     @game.rating.should be_between(0.0, 10.0)
-</span><span class="marked0"><a name="line22"></a>22     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, 10, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should_not raise_error
-</span><span class="marked1"><a name="line23"></a>23     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, 10.1, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should raise_error
-</span><span class="marked0"><a name="line24"></a>24     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, 0, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should_not raise_error
-</span><span class="marked1"><a name="line25"></a>25     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, -0.1, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should raise_error
+</span><span class="inferred0"><a name="line22"></a>22   end
+</span><span class="inferred1"><a name="line23"></a>23   
+</span><span class="marked0"><a name="line24"></a>24   it &quot;should raise error if rating is more than 10.0&quot; do
+</span><span class="marked1"><a name="line25"></a>25     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, 10.1, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should raise_error
 </span><span class="inferred0"><a name="line26"></a>26   end
 </span><span class="inferred1"><a name="line27"></a>27   
-</span><span class="marked0"><a name="line28"></a>28   it &quot;should allow rating with string form&quot; do
-</span><span class="marked1"><a name="line29"></a>29     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, &quot;7.7&quot;, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should_not raise_error
-</span><span class="marked0"><a name="line30"></a>30     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, &quot;10.1&quot;, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should raise_error
+</span><span class="marked0"><a name="line28"></a>28   it &quot;should not raise error if rating is between 0.0 and 10.0&quot; do
+</span><span class="marked1"><a name="line29"></a>29     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, 10, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should_not raise_error
+</span><span class="marked0"><a name="line30"></a>30     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, 0, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should_not raise_error
 </span><span class="inferred1"><a name="line31"></a>31   end
 </span><span class="inferred0"><a name="line32"></a>32   
-</span><span class="marked1"><a name="line33"></a>33   it &quot;should set status of no more than 7&quot; do
-</span><span class="marked0"><a name="line34"></a>34     ((0..7).to_a).each do |v|
-</span><span class="marked1"><a name="line35"></a>35       lambda { Game.new(&quot;H-L&quot;, v, &quot;d-d&quot;, 9.7, &quot;50ˆ&quot;, &quot;asd&quot;, &quot;dsa&quot;) }.should_not raise_error
-</span><span class="inferred0"><a name="line36"></a>36     end
-</span><span class="marked1"><a name="line37"></a>37     ((-10..10).to_a - (0..7).to_a).each do |v|
-</span><span class="marked0"><a name="line38"></a>38       lambda { Game.new(&quot;H-L&quot;, v, &quot;d-d&quot;, 9.7, &quot;50ˆ&quot;, &quot;asd&quot;, &quot;dsa&quot;) }.should raise_error
-</span><span class="inferred1"><a name="line39"></a>39     end
+</span><span class="marked1"><a name="line33"></a>33   it &quot;should raise error if rating is less than 0.0&quot; do
+</span><span class="marked0"><a name="line34"></a>34     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, -0.1, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should raise_error
+</span><span class="inferred1"><a name="line35"></a>35   end
+</span><span class="inferred0"><a name="line36"></a>36   
+</span><span class="marked1"><a name="line37"></a>37   it &quot;should allow rating with string form&quot; do
+</span><span class="marked0"><a name="line38"></a>38     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, &quot;7.7&quot;, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should_not raise_error
+</span><span class="marked1"><a name="line39"></a>39     lambda{Game.new(&quot;H-L&quot;, 1,&quot;google&quot;, &quot;10.1&quot;, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)}.should raise_error
 </span><span class="inferred0"><a name="line40"></a>40   end
 </span><span class="inferred1"><a name="line41"></a>41   
-</span><span class="marked0"><a name="line42"></a>42   it &quot;should let insert Game's status as String&quot; do
-</span><span class="marked1"><a name="line43"></a>43     game = Game.new(&quot;H-L&quot;, &quot;1&quot;,&quot;google&quot;, 10, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)
-</span><span class="marked0"><a name="line44"></a>44     game.status.should be_eql(1)
-</span><span class="marked1"><a name="line45"></a>45     game.status.should_not be_eql(&quot;1&quot;)
-</span><span class="inferred0"><a name="line46"></a>46   end
-</span><span class="inferred1"><a name="line47"></a>47   
-</span><span class="marked0"><a name="line48"></a>48   it &quot;should return string of object&quot; do
-</span><span class="marked1"><a name="line49"></a>49     to_string = &quot;------\nStatus:\t0\nDescription:\n\td-d\nRating:\t9.7\nDemo:\tasd\nFull game:\tdsa\n------\n\n&quot;
-</span><span class="marked0"><a name="line50"></a>50     @game.to_s.should be_eql(to_string)
-</span><span class="inferred1"><a name="line51"></a>51 	end
-</span><span class="inferred0"><a name="line52"></a>52   
-</span><span class="marked1"><a name="line53"></a>53   it &quot;should set cost of game&quot; do
-</span><span class="marked0"><a name="line54"></a>54     @game.cost.should be_eql(&quot;50ˆ&quot;)
+</span><span class="marked0"><a name="line42"></a>42   it &quot;should set status of no more than 7&quot; do
+</span><span class="marked1"><a name="line43"></a>43     ((0..7).to_a).each do |v|
+</span><span class="marked0"><a name="line44"></a>44       lambda { Game.new(&quot;H-L&quot;, v, &quot;d-d&quot;, 9.7, &quot;50ˆ&quot;, &quot;asd&quot;, &quot;dsa&quot;) }.should_not raise_error
+</span><span class="inferred1"><a name="line45"></a>45     end
+</span><span class="marked0"><a name="line46"></a>46     ((-10..10).to_a - (0..7).to_a).each do |v|
+</span><span class="marked1"><a name="line47"></a>47       lambda { Game.new(&quot;H-L&quot;, v, &quot;d-d&quot;, 9.7, &quot;50ˆ&quot;, &quot;asd&quot;, &quot;dsa&quot;) }.should raise_error
+</span><span class="inferred0"><a name="line48"></a>48     end
+</span><span class="inferred1"><a name="line49"></a>49   end
+</span><span class="inferred0"><a name="line50"></a>50   
+</span><span class="marked1"><a name="line51"></a>51   it &quot;should let insert Game's status as String&quot; do
+</span><span class="marked0"><a name="line52"></a>52     game = Game.new(&quot;H-L&quot;, &quot;1&quot;,&quot;google&quot;, 10, &quot;50ˆ&quot;, &quot;master&quot;, &quot;piece&quot;)
+</span><span class="marked1"><a name="line53"></a>53     game.status.should be_eql(1)
+</span><span class="marked0"><a name="line54"></a>54     game.status.should_not be_eql(&quot;1&quot;)
 </span><span class="inferred1"><a name="line55"></a>55   end
 </span><span class="inferred0"><a name="line56"></a>56   
-</span><span class="marked1"><a name="line57"></a>57   it &quot;should raise error if passing other than String&quot; do
-</span><span class="marked0"><a name="line58"></a>58     lambda { 
-</span><span class="marked1"><a name="line59"></a>59       Game.new(&quot;H-L&quot;, v, &quot;d-d&quot;, 9.7, 50, &quot;asd&quot;, &quot;dsa&quot;) 
-</span><span class="marked0"><a name="line60"></a>60     }.should raise_error
-</span><span class="inferred1"><a name="line61"></a>61   end
-</span><span class="inferred0"><a name="line62"></a>62 end
+</span><span class="marked1"><a name="line57"></a>57   it &quot;should return string of object&quot; do
+</span><span class="marked0"><a name="line58"></a>58     to_string = &quot;------\nName:\tHalf-Life® 2\nStatus:\t0\nDescription:\n\td-d\nRating:\t9.7\nCost:\t50ˆ\nDemo:\tasd\nFull game:\tdsa\n------\n\n&quot;
+</span><span class="marked1"><a name="line59"></a>59     @game.to_s.should be_eql(to_string)
+</span><span class="inferred0"><a name="line60"></a>60 	end
+</span><span class="inferred1"><a name="line61"></a>61   
+</span><span class="marked0"><a name="line62"></a>62   it &quot;should set cost of game&quot; do
+</span><span class="marked1"><a name="line63"></a>63     @game.cost.should be_eql(&quot;50ˆ&quot;)
+</span><span class="inferred0"><a name="line64"></a>64   end
+</span><span class="inferred1"><a name="line65"></a>65   
+</span><span class="marked0"><a name="line66"></a>66   it &quot;should raise error if passing money other than String&quot; do
+</span><span class="marked1"><a name="line67"></a>67     lambda { 
+</span><span class="marked0"><a name="line68"></a>68       Game.new(&quot;H-L&quot;, 5, &quot;d-d&quot;, 9.7, 50, &quot;asd&quot;, &quot;dsa&quot;) 
+</span><span class="marked1"><a name="line69"></a>69     }.should raise_error
+</span><span class="inferred0"><a name="line70"></a>70   end
+</span><span class="inferred1"><a name="line71"></a>71 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

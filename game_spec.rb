@@ -2,7 +2,7 @@ require 'game'
 
 describe Game do
   before(:each) do
-    @game = Game.new("H-L", 0,"d-d",9.7, "50ˆ","asd","dsa")
+    @game = Game.new("Half-Life® 2", 0,"d-d",9.7, "50ˆ","asd","dsa")
   end
 
   it "should have status of type Fixnum" do
@@ -19,9 +19,18 @@ describe Game do
 
   it "should have rating from 0.0 to 10.0" do
     @game.rating.should be_between(0.0, 10.0)
-    lambda{Game.new("H-L", 1,"google", 10, "50ˆ", "master", "piece")}.should_not raise_error
+  end
+  
+  it "should raise error if rating is more than 10.0" do
     lambda{Game.new("H-L", 1,"google", 10.1, "50ˆ", "master", "piece")}.should raise_error
+  end
+  
+  it "should not raise error if rating is between 0.0 and 10.0" do
+    lambda{Game.new("H-L", 1,"google", 10, "50ˆ", "master", "piece")}.should_not raise_error
     lambda{Game.new("H-L", 1,"google", 0, "50ˆ", "master", "piece")}.should_not raise_error
+  end
+  
+  it "should raise error if rating is less than 0.0" do
     lambda{Game.new("H-L", 1,"google", -0.1, "50ˆ", "master", "piece")}.should raise_error
   end
   
@@ -46,7 +55,7 @@ describe Game do
   end
   
   it "should return string of object" do
-    to_string = "------\nStatus:\t0\nDescription:\n\td-d\nRating:\t9.7\nDemo:\tasd\nFull game:\tdsa\n------\n\n"
+    to_string = "------\nName:\tHalf-Life® 2\nStatus:\t0\nDescription:\n\td-d\nRating:\t9.7\nCost:\t50ˆ\nDemo:\tasd\nFull game:\tdsa\n------\n\n"
     @game.to_s.should be_eql(to_string)
 	end
   
@@ -54,9 +63,9 @@ describe Game do
     @game.cost.should be_eql("50ˆ")
   end
   
-  it "should raise error if passing other than String" do
+  it "should raise error if passing money other than String" do
     lambda { 
-      Game.new("H-L", v, "d-d", 9.7, 50, "asd", "dsa") 
+      Game.new("H-L", 5, "d-d", 9.7, 50, "asd", "dsa") 
     }.should raise_error
   end
 end

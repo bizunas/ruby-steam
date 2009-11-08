@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sat Nov 07 16:03:30 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Sun Nov 08 18:37:21 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -575,20 +575,20 @@ span.run100 {
         </td>
       <td class='lines_code'><tt>35</tt>
         </td>
-      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>92.1%</tt>
+      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
-            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='92'/>
-                  <td class='uncovered' width='8'/>
+            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='100'/>
+                  <td class='uncovered' width='0'/>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
         </td>
-      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_code'>91.4%</tt>
+      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_code'>100.0%</tt>
               &nbsp;</td>
-            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='91'/>
-                  <td class='uncovered' width='9'/>
+            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='100'/>
+                  <td class='uncovered' width='0'/>
                   </tr>
                 </table>
               </td>
@@ -615,9 +615,9 @@ span.run100 {
 </span><span class="inferred0"><a name="line15"></a>15     end
 </span><span class="marked1"><a name="line16"></a>16     if cost.class == String
 </span><span class="marked0"><a name="line17"></a>17       @cost = cost
-</span><span class="uncovered1"><a name="line18"></a>18     else
-</span><span class="uncovered0"><a name="line19"></a>19       raise &quot;bad cost for game entered&quot;
-</span><span class="uncovered1"><a name="line20"></a>20     end
+</span><span class="inferred1"><a name="line18"></a>18     else
+</span><span class="marked0"><a name="line19"></a>19       raise &quot;bad cost for game entered&quot;
+</span><span class="inferred1"><a name="line20"></a>20     end
 </span><span class="marked0"><a name="line21"></a>21     @demo_url = demo_url
 </span><span class="marked1"><a name="line22"></a>22     @url = url
 </span><span class="inferred0"><a name="line23"></a>23   end
@@ -633,7 +633,7 @@ span.run100 {
 </span><span class="marked0"><a name="line33"></a>33   end
 </span><span class="inferred1"><a name="line34"></a>34   
 </span><span class="marked0"><a name="line35"></a>35   def to_s
-</span><span class="marked1"><a name="line36"></a>36     &quot;------\nStatus:\t#{@status}\nDescription:\n\t#{@description}\nRating:\t#{@rating}\nDemo:\t#{@demo_url}\nFull game:\t#{url}\n------\n\n&quot;
+</span><span class="marked1"><a name="line36"></a>36     &quot;------\nName:\t#{name}\nStatus:\t#{@status}\nDescription:\n\t#{@description}\nRating:\t#{@rating}\nCost:\t#{cost}\nDemo:\t#{@demo_url}\nFull game:\t#{url}\n------\n\n&quot;
 </span><span class="marked0"><a name="line37"></a>37   end
 </span><span class="inferred1"><a name="line38"></a>38 end
 </span></pre><hr/>

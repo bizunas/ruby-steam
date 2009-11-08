@@ -5,9 +5,9 @@ class GameList
   
   def initialize
     
-    @games = [Game.new("Half-Life® 2", 5, "Good game", 8.7, "50€", "http://www.google.lt/hl2", "http://www.yahoo.com/hl2"),
-              Game.new("Half-Life® 2 Episode 1", 3, "Better game", 8.6, "72€", "http://www.google.lt/hl2-1", "http://www.yahoo.com/hl2-1"),
-              Game.new("Half-Life® 2 Episode 2", 0, "Best game", 8.7, "59€", "http://www.google.lt/hl2-2", "http://www.yahoo.com/hl2-2"),
+    @games = [Game.new("Half-Life 2", 5, "Good game", 8.7, "50€", "http://www.google.lt/hl2", "http://www.yahoo.com/hl2"),
+              Game.new("Half-Life 2 Episode 1", 3, "Better game", 8.6, "72€", "http://www.google.lt/hl2-1", "http://www.yahoo.com/hl2-1"),
+              Game.new("Half-Life 2 Episode 2", 0, "Best game", 8.7, "59€", "http://www.google.lt/hl2-2", "http://www.yahoo.com/hl2-2"),
     ]
     load_object
     #end

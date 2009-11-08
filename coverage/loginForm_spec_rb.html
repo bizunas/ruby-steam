@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sat Nov 07 16:03:31 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Sun Nov 08 18:37:22 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -598,62 +598,62 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked0"><a name="line1"></a> 1 require 'loginForm'
-</span><span class="inferred1"><a name="line2"></a> 2 
-</span><span class="marked0"><a name="line3"></a> 3 describe LoginForm do
-</span><span class="marked1"><a name="line4"></a> 4   before(:each) do
-</span><span class="marked0"><a name="line5"></a> 5     @lf = LoginForm.new(&quot;Igoris&quot;, &quot;gamer&quot;)
-</span><span class="inferred1"><a name="line6"></a> 6   end
-</span><span class="inferred0"><a name="line7"></a> 7 
-</span><span class="marked1"><a name="line8"></a> 8   it &quot;should set name from arguments, prompt or stdin&quot; do
-</span><span class="marked0"><a name="line9"></a> 9     @lf.name.should be_eql(&quot;Igoris&quot;)
-</span><span class="marked1"><a name="line10"></a>10     @lf.name.should_not be_eql(&quot;&quot;)
-</span><span class="inferred0"><a name="line11"></a>11   end
-</span><span class="inferred1"><a name="line12"></a>12 
-</span><span class="marked0"><a name="line13"></a>13   it &quot;should set password from arguments, prompt or stdin&quot; do
-</span><span class="marked1"><a name="line14"></a>14     @lf.password.should be_eql(&quot;gamer&quot;)
-</span><span class="marked0"><a name="line15"></a>15     @lf.password.should_not be_eql(&quot;&quot;)
-</span><span class="inferred1"><a name="line16"></a>16   end
-</span><span class="inferred0"><a name="line17"></a>17 
-</span><span class="marked1"><a name="line18"></a>18   it &quot;should have sex of moteris or vyras&quot; do
-</span><span class="marked0"><a name="line19"></a>19     @lf.sex = &quot;vyras&quot;
-</span><span class="marked1"><a name="line20"></a>20     @lf.sex.should match(/Vyras|Moteris/i)
-</span><span class="inferred0"><a name="line21"></a>21   end
-</span><span class="inferred1"><a name="line22"></a>22   
-</span><span class="marked0"><a name="line23"></a>23   it &quot;should set user name&quot; do
-</span><span class="marked1"><a name="line24"></a>24     @lf.set_username(&quot;&quot;,&quot;burokas&quot;)
-</span><span class="marked0"><a name="line25"></a>25     @lf.name.should be_eql(&quot;burokas&quot;)
-</span><span class="inferred1"><a name="line26"></a>26   end
-</span><span class="inferred0"><a name="line27"></a>27   
-</span><span class="marked1"><a name="line28"></a>28   it &quot;should set password&quot; do
-</span><span class="marked0"><a name="line29"></a>29     @lf.set_password(&quot;&quot;,&quot;burokas&quot;)
-</span><span class="marked1"><a name="line30"></a>30     @lf.password.should be_eql(&quot;burokas&quot;)
-</span><span class="inferred0"><a name="line31"></a>31   end
-</span><span class="inferred1"><a name="line32"></a>32   
-</span><span class="marked0"><a name="line33"></a>33   it &quot;should set surname&quot; do
-</span><span class="marked1"><a name="line34"></a>34     @lf.set_surname(&quot;&quot;,&quot;burokas&quot;)
-</span><span class="marked0"><a name="line35"></a>35     @lf.surname.should be_eql(&quot;burokas&quot;)
-</span><span class="inferred1"><a name="line36"></a>36   end
-</span><span class="inferred0"><a name="line37"></a>37   
-</span><span class="marked1"><a name="line38"></a>38   it &quot;should set privileges&quot; do
-</span><span class="marked0"><a name="line39"></a>39     @lf.set_privileges(&quot;&quot;,10)
-</span><span class="marked1"><a name="line40"></a>40     @lf.privileges.should be_eql(10)
-</span><span class="inferred0"><a name="line41"></a>41   end
-</span><span class="inferred1"><a name="line42"></a>42   
-</span><span class="marked0"><a name="line43"></a>43   it &quot;should set user name if there are arguments but no parameters&quot; do
-</span><span class="marked1"><a name="line44"></a>44     if ARGV.length &gt; 0
-</span><span class="marked0"><a name="line45"></a>45       @lf.set_username(&quot;&quot;)
-</span><span class="marked1"><a name="line46"></a>46       @lf.name.should be_eql(ARGV[0])
-</span><span class="inferred0"><a name="line47"></a>47     end
-</span><span class="inferred1"><a name="line48"></a>48   end
-</span><span class="inferred0"><a name="line49"></a>49   
-</span><span class="marked1"><a name="line50"></a>50   it &quot;should set user password if there are arguments but no parameters&quot; do
-</span><span class="marked0"><a name="line51"></a>51     if ARGV.length &gt; 1
-</span><span class="marked1"><a name="line52"></a>52       @lf.set_password(&quot;&quot;)
-</span><span class="marked0"><a name="line53"></a>53       @lf.password.should be_eql(ARGV[1])
-</span><span class="inferred1"><a name="line54"></a>54     end
-</span><span class="inferred0"><a name="line55"></a>55   end
-</span><span class="inferred1"><a name="line56"></a>56 end
+<pre><span class="marked1"><a name="line1"></a> 1 require 'loginForm'
+</span><span class="inferred0"><a name="line2"></a> 2 
+</span><span class="marked1"><a name="line3"></a> 3 describe LoginForm do
+</span><span class="marked0"><a name="line4"></a> 4   before(:each) do
+</span><span class="marked1"><a name="line5"></a> 5     @lf = LoginForm.new(&quot;Igoris&quot;, &quot;gamer&quot;)
+</span><span class="inferred0"><a name="line6"></a> 6   end
+</span><span class="inferred1"><a name="line7"></a> 7 
+</span><span class="marked0"><a name="line8"></a> 8   it &quot;should set name from arguments, prompt or stdin&quot; do
+</span><span class="marked1"><a name="line9"></a> 9     @lf.name.should be_eql(&quot;Igoris&quot;)
+</span><span class="marked0"><a name="line10"></a>10     @lf.name.should_not be_eql(&quot;&quot;)
+</span><span class="inferred1"><a name="line11"></a>11   end
+</span><span class="inferred0"><a name="line12"></a>12 
+</span><span class="marked1"><a name="line13"></a>13   it &quot;should set password from arguments, prompt or stdin&quot; do
+</span><span class="marked0"><a name="line14"></a>14     @lf.password.should be_eql(&quot;gamer&quot;)
+</span><span class="marked1"><a name="line15"></a>15     @lf.password.should_not be_eql(&quot;&quot;)
+</span><span class="inferred0"><a name="line16"></a>16   end
+</span><span class="inferred1"><a name="line17"></a>17 
+</span><span class="marked0"><a name="line18"></a>18   it &quot;should have sex of moteris or vyras&quot; do
+</span><span class="marked1"><a name="line19"></a>19     @lf.sex = &quot;vyras&quot;
+</span><span class="marked0"><a name="line20"></a>20     @lf.sex.should match(/Vyras|Moteris/i)
+</span><span class="inferred1"><a name="line21"></a>21   end
+</span><span class="inferred0"><a name="line22"></a>22   
+</span><span class="marked1"><a name="line23"></a>23   it &quot;should set user name&quot; do
+</span><span class="marked0"><a name="line24"></a>24     @lf.set_username(&quot;&quot;,&quot;burokas&quot;)
+</span><span class="marked1"><a name="line25"></a>25     @lf.name.should be_eql(&quot;burokas&quot;)
+</span><span class="inferred0"><a name="line26"></a>26   end
+</span><span class="inferred1"><a name="line27"></a>27   
+</span><span class="marked0"><a name="line28"></a>28   it &quot;should set password&quot; do
+</span><span class="marked1"><a name="line29"></a>29     @lf.set_password(&quot;&quot;,&quot;burokas&quot;)
+</span><span class="marked0"><a name="line30"></a>30     @lf.password.should be_eql(&quot;burokas&quot;)
+</span><span class="inferred1"><a name="line31"></a>31   end
+</span><span class="inferred0"><a name="line32"></a>32   
+</span><span class="marked1"><a name="line33"></a>33   it &quot;should set surname&quot; do
+</span><span class="marked0"><a name="line34"></a>34     @lf.set_surname(&quot;&quot;,&quot;burokas&quot;)
+</span><span class="marked1"><a name="line35"></a>35     @lf.surname.should be_eql(&quot;burokas&quot;)
+</span><span class="inferred0"><a name="line36"></a>36   end
+</span><span class="inferred1"><a name="line37"></a>37   
+</span><span class="marked0"><a name="line38"></a>38   it &quot;should set privileges&quot; do
+</span><span class="marked1"><a name="line39"></a>39     @lf.set_privileges(&quot;&quot;,10)
+</span><span class="marked0"><a name="line40"></a>40     @lf.privileges.should be_eql(10)
+</span><span class="inferred1"><a name="line41"></a>41   end
+</span><span class="inferred0"><a name="line42"></a>42   
+</span><span class="marked1"><a name="line43"></a>43   it &quot;should set user name if there are arguments but no parameters&quot; do
+</span><span class="marked0"><a name="line44"></a>44     if ARGV.length &gt; 0
+</span><span class="marked1"><a name="line45"></a>45       @lf.set_username(&quot;&quot;)
+</span><span class="marked0"><a name="line46"></a>46       @lf.name.should be_eql(ARGV[0])
+</span><span class="inferred1"><a name="line47"></a>47     end
+</span><span class="inferred0"><a name="line48"></a>48   end
+</span><span class="inferred1"><a name="line49"></a>49   
+</span><span class="marked0"><a name="line50"></a>50   it &quot;should set user password if there are arguments but no parameters&quot; do
+</span><span class="marked1"><a name="line51"></a>51     if ARGV.length &gt; 1
+</span><span class="marked0"><a name="line52"></a>52       @lf.set_password(&quot;&quot;)
+</span><span class="marked1"><a name="line53"></a>53       @lf.password.should be_eql(ARGV[1])
+</span><span class="inferred0"><a name="line54"></a>54     end
+</span><span class="inferred1"><a name="line55"></a>55   end
+</span><span class="inferred0"><a name="line56"></a>56 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>
