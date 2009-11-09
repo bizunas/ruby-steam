@@ -40,11 +40,28 @@ describe LoginForm do
     @lf.privileges.should be_eql(10)
   end
   
+  it "should be able to set privileges as string to integer" do
+    @lf.set_privileges("","10")
+    @lf.privileges.should be_eql(10)
+  end
+  
   it "should set user name if there are arguments but no parameters" do
     if ARGV.length > 0
       @lf.set_username("")
       @lf.name.should be_eql(ARGV[0])
     end
+  end
+  
+  it "should be able to set privileges to 0 if string is \"0\"" do
+    @lf.privileges_check("0").should be_eql(0)
+  end
+  
+  it "should be able to set privileges to 1 if anything else fails" do
+    @lf.privileges_check("0").should be_eql(0)
+  end
+  
+  it "should be able to set privileges to 1 if anything else fails" do
+    @lf.privileges_check("bad").should be_eql(1)
   end
   
   it "should set user password if there are arguments but no parameters" do

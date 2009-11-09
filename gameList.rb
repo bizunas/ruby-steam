@@ -10,20 +10,19 @@ class GameList
               Game.new("Half-Life 2 Episode 2", 0, "Best game", 8.7, "59€", "http://www.google.lt/hl2-2", "http://www.yahoo.com/hl2-2"),
     ]
     load_object
-    #end
-
-    #file = File.new("games.dat", "r")
-    #while (line = file.gets)
-    #  line = line.chomp.split(/\|/)
-    #  @games << Game.new(line[0], line[1], line[2], line[3], line[4])
-    #end
-    #puts @games.inspect()
-    #file.close
   end
 
   def add_game(name, status, description, rating, demo, url)
     @games << Game.new(name, status, description, rating, demo, url)
     save_object
+  end
+  
+  def delete_game(id)
+    if id <= @games.length
+      @games.delete_at(id)
+    else
+      raise "Bad id for games to delete"
+    end
   end
   
   def print_games(wo_zero = false)
@@ -45,12 +44,11 @@ class GameList
     end
     ret
   end
-  
-  private
-  So = "wh.dat"
+
+  Save_dat = "wh.dat"
 
   def save_object
-    file = File.new(So, 'w')
+    file = File.new(Save_dat, 'w')
     data = Marshal.dump(@games)
     file.write(data)
     file.close
@@ -58,9 +56,9 @@ class GameList
   end
 
   def load_object
-    if File.exists? So
-      file = File.open(So, 'r')
-      data = file.read(File.size(So))
+    if File.exists? Save_dat
+      file = File.open(Save_dat, 'r')
+      data = file.read(File.size(Save_dat))
       @games = Marshal.load(data)
       file.close
     else

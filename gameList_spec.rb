@@ -1,4 +1,5 @@
 require 'gameList'
+require 'matchers'
 
 describe GameList do
   before(:each) do
@@ -21,6 +22,15 @@ describe GameList do
       game.demo_url.should be_kind_of(String)
       game.url.should be_kind_of(String)
     end
+  end
+  
+  it "should be able to delete game" do
+    @game_list.delete_game(0)
+    @game_list.games.length.should be_eql(2)
+  end
+  
+  it "should raise error if there is no id for game" do
+    ((@game_list.games.length+1..@game_list.games.length+10).to_a).each {|v| lambda {@game_list.delete_game(v)}.should raise_error}
   end
   
   it "should be able to print games from the list with filter of status 0" do
@@ -52,6 +62,21 @@ describe GameList do
       to_string << "#{@game_list.games[i].to_s}"
     end
     @game_list.to_s.should be_eql(to_string)
+  end
+  
+  it "should return false if it couldn't load_object" do
+    File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
+    @game_list.load_object.should be_false
+    File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
+  end
+  
+  it "should save object after adding new user" do
+    File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
+    gameList = GameList.new
+    gameList.add_game("Halo", 1, "Fun game", 7.8, "500$", "none")
+    gameList.games.length.should be_more_than(1)
+    File.delete("wh.dat")
+    File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
   end
 end
 

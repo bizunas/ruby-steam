@@ -19,6 +19,16 @@ describe 'Cart' do
     @cart.games.length.should be_eql(1)
   end
   
+  it "should raise error for unknown game" do
+    gl = GameList.new
+    ((-2..gl.games.length+10).to_a - (1..gl.games.length).to_a).each {|v| lambda {@cart.add_game(v)}.should raise_error}
+  end
+  
+  it "should not raise error adding a game if game is in a list" do
+    gl = GameList.new
+    ((1..gl.games.length).to_a).each {|v| lambda {@cart.add_game(v)}.should_not raise_error}
+  end
+  
   it "should make sure to make status 0 of added game" do
     length = @cart.games.length
     @cart.add_game(1)

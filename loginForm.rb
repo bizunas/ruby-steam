@@ -45,11 +45,25 @@ class LoginForm
   
   def set_privileges(msg, priv = nil)
     if priv != nil
-      @privileges = priv
+      @privileges = privileges_check(priv)
     else
       puts "#{msg}"
       STDOUT.flush
-      @privileges = STDIN.gets.chomp
+      priv = STDIN.gets.chomp
+      @privileges = privileges_check(priv)
     end
+  end
+  
+  def privileges_check(priv)
+    if priv != "0"
+      if priv.to_i > 0
+        privileges = priv.to_i
+      else
+        privileges = 1
+      end
+    else
+      privileges = 0
+    end
+    privileges
   end
 end

@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sun Nov 08 18:37:22 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 09 16:34:13 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,24 +571,24 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='loginForm_rb.html'>loginForm.rb</a>
         </td>
-      <td class='lines_total'><tt>55</tt>
+      <td class='lines_total'><tt>69</tt>
         </td>
-      <td class='lines_code'><tt>49</tt>
+      <td class='lines_code'><tt>62</tt>
         </td>
-      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>65.5%</tt>
+      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>71.0%</tt>
               &nbsp;</td>
-            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='65'/>
-                  <td class='uncovered' width='35'/>
+            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='71'/>
+                  <td class='uncovered' width='29'/>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
         </td>
-      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_code'>61.2%</tt>
+      <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_code'>67.7%</tt>
               &nbsp;</td>
-            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='61'/>
-                  <td class='uncovered' width='39'/>
+            <td><table cellspacing='0' class='percent_graph' cellpadding='0' width='100'><tr><td class='covered' width='68'/>
+                  <td class='uncovered' width='32'/>
                   </tr>
                 </table>
               </td>
@@ -645,14 +645,28 @@ span.run100 {
 </span><span class="inferred0"><a name="line45"></a>45   
 </span><span class="marked1"><a name="line46"></a>46   def set_privileges(msg, priv = nil)
 </span><span class="marked0"><a name="line47"></a>47     if priv != nil
-</span><span class="marked1"><a name="line48"></a>48       @privileges = priv
+</span><span class="marked1"><a name="line48"></a>48       @privileges = privileges_check(priv)
 </span><span class="uncovered0"><a name="line49"></a>49     else
 </span><span class="uncovered1"><a name="line50"></a>50       puts &quot;#{msg}&quot;
 </span><span class="uncovered0"><a name="line51"></a>51       STDOUT.flush
-</span><span class="uncovered1"><a name="line52"></a>52       @privileges = STDIN.gets.chomp
-</span><span class="uncovered0"><a name="line53"></a>53     end
-</span><span class="marked1"><a name="line54"></a>54   end
-</span><span class="inferred0"><a name="line55"></a>55 end
+</span><span class="uncovered1"><a name="line52"></a>52       priv = STDIN.gets.chomp
+</span><span class="uncovered0"><a name="line53"></a>53       @privileges = privileges_check(priv)
+</span><span class="uncovered1"><a name="line54"></a>54     end
+</span><span class="marked0"><a name="line55"></a>55   end
+</span><span class="inferred1"><a name="line56"></a>56   
+</span><span class="marked0"><a name="line57"></a>57   def privileges_check(priv)
+</span><span class="marked1"><a name="line58"></a>58     if priv != &quot;0&quot;
+</span><span class="marked0"><a name="line59"></a>59       if priv.to_i &gt; 0
+</span><span class="marked1"><a name="line60"></a>60         privileges = priv.to_i
+</span><span class="inferred0"><a name="line61"></a>61       else
+</span><span class="marked1"><a name="line62"></a>62         privileges = 1
+</span><span class="inferred0"><a name="line63"></a>63       end
+</span><span class="inferred1"><a name="line64"></a>64     else
+</span><span class="marked0"><a name="line65"></a>65       privileges = 0
+</span><span class="inferred1"><a name="line66"></a>66     end
+</span><span class="marked0"><a name="line67"></a>67     privileges
+</span><span class="inferred1"><a name="line68"></a>68   end
+</span><span class="inferred0"><a name="line69"></a>69 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

@@ -13,6 +13,7 @@ class AccountList
     @accounts << Account.new(name, password, surname, sex, privileges)
     save_object
   end
+
   
   def get_user(name, pass)
     @accounts.each do |acc|
@@ -38,8 +39,7 @@ class AccountList
     end
     ret
   end
-  
-  private
+
   Wh = "acc.dat"
 
   def save_object
@@ -55,6 +55,12 @@ class AccountList
       data = file.read(File.size(Wh))
       @accounts = Marshal.load(data)
       file.close
+      biggest = 0
+      @accounts.each do |acc|
+        biggest = acc.account_id if acc.account_id > biggest
+      end
+      Account.new("Admin", "root").set_id(biggest)
+      @accounts
     else
       false
     end

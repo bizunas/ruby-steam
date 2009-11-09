@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sun Nov 08 18:37:21 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 09 16:34:12 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -598,44 +598,44 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked0"><a name="line1"></a> 1 class Game
-</span><span class="marked1"><a name="line2"></a> 2   attr_reader :name, :description, :rating, :demo_url, :url, :cost
-</span><span class="marked0"><a name="line3"></a> 3   attr_accessor :status
-</span><span class="inferred1"><a name="line4"></a> 4   
-</span><span class="marked0"><a name="line5"></a> 5   def initialize(name, status, description, rating, cost, demo_url, url = nil)
-</span><span class="marked1"><a name="line6"></a> 6     @name = name
-</span><span class="marked0"><a name="line7"></a> 7     set_status(status)
-</span><span class="marked1"><a name="line8"></a> 8     @description = description
-</span><span class="marked0"><a name="line9"></a> 9     if rating.class == Float &amp;&amp; rating.between?(0,10)
-</span><span class="marked1"><a name="line10"></a>10       @rating = rating
-</span><span class="marked0"><a name="line11"></a>11     elsif rating.to_f.between?(0,10)
-</span><span class="marked1"><a name="line12"></a>12       @rating = rating.to_f
-</span><span class="inferred0"><a name="line13"></a>13     else
-</span><span class="marked1"><a name="line14"></a>14       raise &quot;bad rating entered&quot;
-</span><span class="inferred0"><a name="line15"></a>15     end
-</span><span class="marked1"><a name="line16"></a>16     if cost.class == String
-</span><span class="marked0"><a name="line17"></a>17       @cost = cost
-</span><span class="inferred1"><a name="line18"></a>18     else
-</span><span class="marked0"><a name="line19"></a>19       raise &quot;bad cost for game entered&quot;
-</span><span class="inferred1"><a name="line20"></a>20     end
-</span><span class="marked0"><a name="line21"></a>21     @demo_url = demo_url
-</span><span class="marked1"><a name="line22"></a>22     @url = url
-</span><span class="inferred0"><a name="line23"></a>23   end
-</span><span class="inferred1"><a name="line24"></a>24 
-</span><span class="marked0"><a name="line25"></a>25   def set_status(status)
-</span><span class="marked1"><a name="line26"></a>26     if status.class != Fixnum &amp;&amp; status.to_i.between?(0, 7)
-</span><span class="marked0"><a name="line27"></a>27       @status = status.to_i
-</span><span class="marked1"><a name="line28"></a>28     elsif status.class == Fixnum &amp;&amp; status.between?(0, 7)
-</span><span class="marked0"><a name="line29"></a>29       @status = status
-</span><span class="inferred1"><a name="line30"></a>30     else
-</span><span class="marked0"><a name="line31"></a>31       raise &quot;Status must be between 0-7&quot;
-</span><span class="inferred1"><a name="line32"></a>32     end
-</span><span class="marked0"><a name="line33"></a>33   end
-</span><span class="inferred1"><a name="line34"></a>34   
-</span><span class="marked0"><a name="line35"></a>35   def to_s
-</span><span class="marked1"><a name="line36"></a>36     &quot;------\nName:\t#{name}\nStatus:\t#{@status}\nDescription:\n\t#{@description}\nRating:\t#{@rating}\nCost:\t#{cost}\nDemo:\t#{@demo_url}\nFull game:\t#{url}\n------\n\n&quot;
-</span><span class="marked0"><a name="line37"></a>37   end
-</span><span class="inferred1"><a name="line38"></a>38 end
+<pre><span class="marked1"><a name="line1"></a> 1 class Game
+</span><span class="marked0"><a name="line2"></a> 2   attr_reader :name, :description, :rating, :demo_url, :url, :cost
+</span><span class="marked1"><a name="line3"></a> 3   attr_accessor :status
+</span><span class="inferred0"><a name="line4"></a> 4   
+</span><span class="marked1"><a name="line5"></a> 5   def initialize(name, status, description, rating, cost, demo_url, url = nil)
+</span><span class="marked0"><a name="line6"></a> 6     @name = name
+</span><span class="marked1"><a name="line7"></a> 7     set_status(status)
+</span><span class="marked0"><a name="line8"></a> 8     @description = description
+</span><span class="marked1"><a name="line9"></a> 9     if rating.class == Float &amp;&amp; rating.between?(0,10)
+</span><span class="marked0"><a name="line10"></a>10       @rating = rating
+</span><span class="marked1"><a name="line11"></a>11     elsif rating.to_f.between?(0,10)
+</span><span class="marked0"><a name="line12"></a>12       @rating = rating.to_f
+</span><span class="inferred1"><a name="line13"></a>13     else
+</span><span class="marked0"><a name="line14"></a>14       raise &quot;bad rating entered&quot;
+</span><span class="inferred1"><a name="line15"></a>15     end
+</span><span class="marked0"><a name="line16"></a>16     if cost.class == String
+</span><span class="marked1"><a name="line17"></a>17       @cost = cost
+</span><span class="inferred0"><a name="line18"></a>18     else
+</span><span class="marked1"><a name="line19"></a>19       raise &quot;bad cost for game entered&quot;
+</span><span class="inferred0"><a name="line20"></a>20     end
+</span><span class="marked1"><a name="line21"></a>21     @demo_url = demo_url
+</span><span class="marked0"><a name="line22"></a>22     @url = url
+</span><span class="inferred1"><a name="line23"></a>23   end
+</span><span class="inferred0"><a name="line24"></a>24 
+</span><span class="marked1"><a name="line25"></a>25   def set_status(status)
+</span><span class="marked0"><a name="line26"></a>26     if status.class != Fixnum &amp;&amp; status.to_i.between?(0, 7)
+</span><span class="marked1"><a name="line27"></a>27       @status = status.to_i
+</span><span class="marked0"><a name="line28"></a>28     elsif status.class == Fixnum &amp;&amp; status.between?(0, 7)
+</span><span class="marked1"><a name="line29"></a>29       @status = status
+</span><span class="inferred0"><a name="line30"></a>30     else
+</span><span class="marked1"><a name="line31"></a>31       raise &quot;Status must be between 0-7&quot;
+</span><span class="inferred0"><a name="line32"></a>32     end
+</span><span class="marked1"><a name="line33"></a>33   end
+</span><span class="inferred0"><a name="line34"></a>34   
+</span><span class="marked1"><a name="line35"></a>35   def to_s
+</span><span class="marked0"><a name="line36"></a>36     &quot;------\nName:\t#{name}\nStatus:\t#{@status}\nDescription:\n\t#{@description}\nRating:\t#{@rating}\nCost:\t#{cost}\nDemo:\t#{@demo_url}\nFull game:\t#{url}\n------\n\n&quot;
+</span><span class="marked1"><a name="line37"></a>37   end
+</span><span class="inferred0"><a name="line38"></a>38 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

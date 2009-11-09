@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sun Nov 08 18:37:20 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 09 16:34:11 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,9 +571,9 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='accountList_spec_rb.html'>accountList_spec.rb</a>
         </td>
-      <td class='lines_total'><tt>40</tt>
+      <td class='lines_total'><tt>66</tt>
         </td>
-      <td class='lines_code'><tt>33</tt>
+      <td class='lines_code'><tt>54</tt>
         </td>
       <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
@@ -607,37 +607,63 @@ span.run100 {
 </span><span class="marked1"><a name="line7"></a> 7   before(:each) do
 </span><span class="marked0"><a name="line8"></a> 8     @account_list = AccountList.new
 </span><span class="marked1"><a name="line9"></a> 9     @accounts = @account_list.accounts
-</span><span class="inferred0"><a name="line10"></a>10   end
-</span><span class="inferred1"><a name="line11"></a>11 
-</span><span class="marked0"><a name="line12"></a>12   it &quot;should have Administrator in accounts&quot; do
-</span><span class="marked1"><a name="line13"></a>13     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should_not be_nil
-</span><span class="marked0"><a name="line14"></a>14     @accounts.should include(@account_list.get_user(&quot;Admin&quot;, &quot;root&quot;))
+</span><span class="marked0"><a name="line10"></a>10     @accounts = @account_list.accounts
+</span><span class="inferred1"><a name="line11"></a>11   end
+</span><span class="inferred0"><a name="line12"></a>12   
+</span><span class="marked1"><a name="line13"></a>13   it &quot;should return account object for get_user&quot; do
+</span><span class="marked0"><a name="line14"></a>14     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should_not be_nil
 </span><span class="inferred1"><a name="line15"></a>15   end
 </span><span class="inferred0"><a name="line16"></a>16   
-</span><span class="marked1"><a name="line17"></a>17   it &quot;should be in DB if user wants to login&quot; do
-</span><span class="marked0"><a name="line18"></a>18     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should be_kind_of(Account)
-</span><span class="inferred1"><a name="line19"></a>19   end
-</span><span class="inferred0"><a name="line20"></a>20   
-</span><span class="marked1"><a name="line21"></a>21   it &quot;should return nil object if there is no user in DB&quot; do
-</span><span class="marked0"><a name="line22"></a>22 	not_registered_account = Account.new(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;, &quot;asdasd&quot;, &quot;Vyras&quot;)
-</span><span class="marked1"><a name="line23"></a>23     @accounts.should_not include(not_registered_account)
-</span><span class="marked0"><a name="line24"></a>24 	@account_list.get_user(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;).should be_nil
-</span><span class="inferred1"><a name="line25"></a>25   end
-</span><span class="inferred0"><a name="line26"></a>26   
-</span><span class="marked1"><a name="line27"></a>27   it &quot;should have same name and password as in DB&quot; do
-</span><span class="marked0"><a name="line28"></a>28     @account_list.logged_in?(&quot;google&quot;,&quot;asd&quot;,&quot;google&quot;,&quot;asd&quot;).should be_true
-</span><span class="marked1"><a name="line29"></a>29     @account_list.logged_in?(&quot;vardenis&quot;, &quot;mmm&quot;, &quot;pavardenis&quot;, &quot;mmm&quot;).should be_false
+</span><span class="marked1"><a name="line17"></a>17   it &quot;should return false if it couldn't load_object&quot; do
+</span><span class="marked0"><a name="line18"></a>18     File.rename(&quot;acc.dat&quot;, &quot;acc.dat.bak&quot;) if File.exists?(&quot;acc.dat&quot;)
+</span><span class="marked1"><a name="line19"></a>19     AccountList.new.load_object.should be_false
+</span><span class="marked0"><a name="line20"></a>20     File.rename(&quot;acc.dat.bak&quot;, &quot;acc.dat&quot;) if File.exists?(&quot;acc.dat.bak&quot;)
+</span><span class="inferred1"><a name="line21"></a>21   end
+</span><span class="inferred0"><a name="line22"></a>22   
+</span><span class="marked1"><a name="line23"></a>23   it &quot;should save object after adding new user&quot; do
+</span><span class="marked0"><a name="line24"></a>24     File.rename(&quot;acc.dat&quot;, &quot;acc.dat.bak&quot;) if File.exists?(&quot;acc.dat&quot;)
+</span><span class="marked1"><a name="line25"></a>25     accList = AccountList.new
+</span><span class="marked0"><a name="line26"></a>26     accList.add_user(&quot;google&quot;, &quot;tesla&quot;, &quot;googler&quot;, &quot;Vyras&quot;, 1)
+</span><span class="marked1"><a name="line27"></a>27     accList.accounts.length.should be_more_than(1)
+</span><span class="marked0"><a name="line28"></a>28     File.delete(&quot;acc.dat&quot;)
+</span><span class="marked1"><a name="line29"></a>29     File.rename(&quot;acc.dat.bak&quot;, &quot;acc.dat&quot;)if File.exists?(&quot;acc.dat.bak&quot;)
 </span><span class="inferred0"><a name="line30"></a>30   end
 </span><span class="inferred1"><a name="line31"></a>31   
-</span><span class="marked0"><a name="line32"></a>32   it &quot;should return string of object&quot; do
-</span><span class="marked1"><a name="line33"></a>33     to_string = &quot;Account list:\n&quot;
-</span><span class="marked0"><a name="line34"></a>34     @accounts.each do |acc|
-</span><span class="marked1"><a name="line35"></a>35       to_string &lt;&lt; acc.to_s
-</span><span class="inferred0"><a name="line36"></a>36 	end
-</span><span class="inferred1"><a name="line37"></a>37   
-</span><span class="marked0"><a name="line38"></a>38 	@account_list.to_s.should be_eql(to_string)
-</span><span class="inferred1"><a name="line39"></a>39   end
-</span><span class="inferred0"><a name="line40"></a>40 end
+</span><span class="marked0"><a name="line32"></a>32   it &quot;should have Administrator in accounts&quot; do
+</span><span class="marked1"><a name="line33"></a>33     @accounts.should include(@account_list.get_user(&quot;Admin&quot;, &quot;root&quot;))
+</span><span class="inferred0"><a name="line34"></a>34   end
+</span><span class="inferred1"><a name="line35"></a>35   
+</span><span class="marked0"><a name="line36"></a>36   it &quot;should be in DB if user wants to login&quot; do
+</span><span class="marked1"><a name="line37"></a>37     @account_list.get_user(&quot;Admin&quot;, &quot;root&quot;).should be_kind_of(Account)
+</span><span class="inferred0"><a name="line38"></a>38   end
+</span><span class="inferred1"><a name="line39"></a>39   
+</span><span class="marked0"><a name="line40"></a>40   it &quot;should not contain non existing user&quot; do
+</span><span class="marked1"><a name="line41"></a>41     not_registered_account = Account.new(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;, &quot;asdasd&quot;, &quot;Vyras&quot;)
+</span><span class="marked0"><a name="line42"></a>42     @accounts.should_not include(not_registered_account)
+</span><span class="inferred1"><a name="line43"></a>43   end
+</span><span class="inferred0"><a name="line44"></a>44   
+</span><span class="marked1"><a name="line45"></a>45   it &quot;should return nil object if there is no user in DB&quot; do
+</span><span class="marked0"><a name="line46"></a>46 	not_registered_account = Account.new(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;, &quot;asdasd&quot;, &quot;Vyras&quot;)
+</span><span class="marked1"><a name="line47"></a>47 	@account_list.get_user(&quot;bbbbbbbbbbbbbb&quot;, &quot;cccccccccccc&quot;).should be_nil
+</span><span class="inferred0"><a name="line48"></a>48   end
+</span><span class="inferred1"><a name="line49"></a>49   
+</span><span class="marked0"><a name="line50"></a>50   it &quot;should have same name and password as in DB&quot; do
+</span><span class="marked1"><a name="line51"></a>51     @account_list.logged_in?(&quot;google&quot;,&quot;asd&quot;,&quot;google&quot;,&quot;asd&quot;).should be_true
+</span><span class="inferred0"><a name="line52"></a>52   end
+</span><span class="inferred1"><a name="line53"></a>53   
+</span><span class="marked0"><a name="line54"></a>54   it &quot;should not have user if it doesn't exist in DB&quot; do
+</span><span class="marked1"><a name="line55"></a>55     @account_list.logged_in?(&quot;vardenis&quot;, &quot;mmm&quot;, &quot;pavardenis&quot;, &quot;mmm&quot;).should be_false
+</span><span class="inferred0"><a name="line56"></a>56   end
+</span><span class="inferred1"><a name="line57"></a>57   
+</span><span class="marked0"><a name="line58"></a>58   it &quot;should return string of object&quot; do
+</span><span class="marked1"><a name="line59"></a>59     to_string = &quot;Account list:\n&quot;
+</span><span class="marked0"><a name="line60"></a>60     @accounts.each do |acc|
+</span><span class="marked1"><a name="line61"></a>61       to_string &lt;&lt; acc.to_s
+</span><span class="inferred0"><a name="line62"></a>62     end
+</span><span class="inferred1"><a name="line63"></a>63   
+</span><span class="marked0"><a name="line64"></a>64     @account_list.to_s.should be_eql(to_string)
+</span><span class="inferred1"><a name="line65"></a>65   end
+</span><span class="inferred0"><a name="line66"></a>66 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

@@ -7,10 +7,26 @@ describe AccountList do
   before(:each) do
     @account_list = AccountList.new
     @accounts = @account_list.accounts
+    @accounts = @account_list.accounts
   end
-
+  
   it "should return account object for get_user" do
     @account_list.get_user("Admin", "root").should_not be_nil
+  end
+  
+  it "should return false if it couldn't load_object" do
+    File.rename("acc.dat", "acc.dat.bak") if File.exists?("acc.dat")
+    AccountList.new.load_object.should be_false
+    File.rename("acc.dat.bak", "acc.dat") if File.exists?("acc.dat.bak")
+  end
+  
+  it "should save object after adding new user" do
+    File.rename("acc.dat", "acc.dat.bak") if File.exists?("acc.dat")
+    accList = AccountList.new
+    accList.add_user("google", "tesla", "googler", "Vyras", 1)
+    accList.accounts.length.should be_more_than(1)
+    File.delete("acc.dat")
+    File.rename("acc.dat.bak", "acc.dat")if File.exists?("acc.dat.bak")
   end
   
   it "should have Administrator in accounts" do
@@ -44,7 +60,7 @@ describe AccountList do
     @accounts.each do |acc|
       to_string << acc.to_s
     end
-
+  
     @account_list.to_s.should be_eql(to_string)
   end
 end

@@ -10,6 +10,7 @@ class Cart
   
   def add_game(index)
     gl = GameList.new
+    raise "Bad index to add game" if index > gl.games.length or index < 1
     include = false
     @games.each do |game|
       if game.description == gl.games[index-1].description

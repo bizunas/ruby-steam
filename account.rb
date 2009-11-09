@@ -44,6 +44,10 @@ class Account
     @money -= sum
   end
   
+  def set_id(id)
+    @@id_counter = id
+  end
+  
   def to_s
     ret = "------\n"
     ret << "User name:\t#{@name} #{surname}\n"

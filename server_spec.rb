@@ -1,5 +1,6 @@
 require 'server'
 require 'gameList'
+require 'matchers'
 
 describe Server do
   
@@ -13,7 +14,8 @@ describe Server do
     gl.games.each do |game|
       names << game.name
     end
-    names.should include(@server.game)
+    @server.game.should be_from_list(names)
+    #names.should include(@server.game)
   end
 
   it "should rasie error if there is no game for server" do
@@ -30,7 +32,11 @@ describe Server do
   end
   
   it "should not have more players than it can hold" do
-    #TODO: custom matcher
+    @server.players_total.should be_more_than(@server.players_now)
+  end
+  
+  it "should have more total players than now playing" do
+    @server.players_now.should_not be_more_than(@server.players_total)
   end
 
   

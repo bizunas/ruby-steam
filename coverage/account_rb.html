@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Sun Nov 08 18:37:20 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 09 16:34:11 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,9 +571,9 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='account_rb.html'>account.rb</a>
         </td>
-      <td class='lines_total'><tt>56</tt>
+      <td class='lines_total'><tt>60</tt>
         </td>
-      <td class='lines_code'><tt>50</tt>
+      <td class='lines_code'><tt>53</tt>
         </td>
       <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
@@ -644,16 +644,20 @@ span.run100 {
 </span><span class="marked0"><a name="line44"></a>44     @money -= sum
 </span><span class="inferred1"><a name="line45"></a>45   end
 </span><span class="inferred0"><a name="line46"></a>46   
-</span><span class="marked1"><a name="line47"></a>47   def to_s
-</span><span class="marked0"><a name="line48"></a>48     ret = &quot;------\n&quot;
-</span><span class="marked1"><a name="line49"></a>49     ret &lt;&lt; &quot;User name:\t#{@name} #{surname}\n&quot;
-</span><span class="marked0"><a name="line50"></a>50     ret &lt;&lt; &quot;Sex:\t#{@sex}\n&quot;
-</span><span class="marked1"><a name="line51"></a>51     ret &lt;&lt; &quot;Account ID:\t#{@account_id}\n&quot;
-</span><span class="marked0"><a name="line52"></a>52     ret &lt;&lt; &quot;Privileges:\t#{@privileges}\n&quot;
-</span><span class="marked1"><a name="line53"></a>53     ret &lt;&lt; &quot;Money balance:\t #{@money}\n\n&quot;
-</span><span class="marked0"><a name="line54"></a>54     ret &lt;&lt; &quot;-----\n\n&quot;
-</span><span class="inferred1"><a name="line55"></a>55   end
-</span><span class="inferred0"><a name="line56"></a>56 end
+</span><span class="marked1"><a name="line47"></a>47   def set_id(id)
+</span><span class="marked0"><a name="line48"></a>48     @@id_counter = id
+</span><span class="marked1"><a name="line49"></a>49   end
+</span><span class="inferred0"><a name="line50"></a>50   
+</span><span class="marked1"><a name="line51"></a>51   def to_s
+</span><span class="marked0"><a name="line52"></a>52     ret = &quot;------\n&quot;
+</span><span class="marked1"><a name="line53"></a>53     ret &lt;&lt; &quot;User name:\t#{@name} #{surname}\n&quot;
+</span><span class="marked0"><a name="line54"></a>54     ret &lt;&lt; &quot;Sex:\t#{@sex}\n&quot;
+</span><span class="marked1"><a name="line55"></a>55     ret &lt;&lt; &quot;Account ID:\t#{@account_id}\n&quot;
+</span><span class="marked0"><a name="line56"></a>56     ret &lt;&lt; &quot;Privileges:\t#{@privileges}\n&quot;
+</span><span class="marked1"><a name="line57"></a>57     ret &lt;&lt; &quot;Money balance:\t #{@money}\n\n&quot;
+</span><span class="marked0"><a name="line58"></a>58     ret &lt;&lt; &quot;-----\n\n&quot;
+</span><span class="inferred1"><a name="line59"></a>59   end
+</span><span class="inferred0"><a name="line60"></a>60 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>
