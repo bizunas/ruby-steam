@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Mon Nov 09 16:34:14 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 09 17:09:20 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -598,49 +598,49 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked1"><a name="line1"></a> 1 require 'server'
-</span><span class="marked0"><a name="line2"></a> 2 require 'gameList'
-</span><span class="marked1"><a name="line3"></a> 3 require 'matchers'
-</span><span class="inferred0"><a name="line4"></a> 4 
-</span><span class="marked1"><a name="line5"></a> 5 describe Server do
-</span><span class="inferred0"><a name="line6"></a> 6   
-</span><span class="marked1"><a name="line7"></a> 7   before(:each) do
-</span><span class="marked0"><a name="line8"></a> 8     @server = Server.new(&quot;Mustafa&quot;, &quot;Half-Life 2&quot;, 32, &quot;de_zealot&quot;)
-</span><span class="inferred1"><a name="line9"></a> 9   end
-</span><span class="inferred0"><a name="line10"></a>10   
-</span><span class="marked1"><a name="line11"></a>11   it &quot;should have game from games list&quot; do
-</span><span class="marked0"><a name="line12"></a>12     gl = GameList.new
-</span><span class="marked1"><a name="line13"></a>13     names = []
-</span><span class="marked0"><a name="line14"></a>14     gl.games.each do |game|
-</span><span class="marked1"><a name="line15"></a>15       names &lt;&lt; game.name
-</span><span class="inferred0"><a name="line16"></a>16     end
-</span><span class="marked1"><a name="line17"></a>17     @server.game.should be_from_list(names)
-</span><span class="inferred0"><a name="line18"></a>18     #names.should include(@server.game)
-</span><span class="inferred1"><a name="line19"></a>19   end
-</span><span class="inferred0"><a name="line20"></a>20 
-</span><span class="marked1"><a name="line21"></a>21   it &quot;should rasie error if there is no game for server&quot; do
-</span><span class="marked0"><a name="line22"></a>22     lambda { Server.new(&quot;Mustafa&quot;, &quot;No game in List&quot;, 32, &quot;de_zealot&quot;) }.should raise_error
-</span><span class="inferred1"><a name="line23"></a>23   end
-</span><span class="inferred0"><a name="line24"></a>24 
-</span><span class="marked1"><a name="line25"></a>25   it &quot;should be able to add integer from string for players_total&quot; do
-</span><span class="marked0"><a name="line26"></a>26     server = Server.new(&quot;Mustafa&quot;, &quot;Half-Life 2&quot;, &quot;32&quot;, &quot;de_zealot&quot;)
-</span><span class="marked1"><a name="line27"></a>27     server.players_total.should be_eql(32)
-</span><span class="inferred0"><a name="line28"></a>28   end
-</span><span class="inferred1"><a name="line29"></a>29   
-</span><span class="marked0"><a name="line30"></a>30   it &quot;should raise error if players_total is not fixnum or string&quot; do
-</span><span class="marked1"><a name="line31"></a>31     lambda {Server.new(&quot;Mustafa&quot;, &quot;Half-Life 2&quot;, 10.5, &quot;de_zealot&quot;) }.should raise_error
-</span><span class="inferred0"><a name="line32"></a>32   end
-</span><span class="inferred1"><a name="line33"></a>33   
-</span><span class="marked0"><a name="line34"></a>34   it &quot;should not have more players than it can hold&quot; do
-</span><span class="marked1"><a name="line35"></a>35     @server.players_total.should be_more_than(@server.players_now)
-</span><span class="inferred0"><a name="line36"></a>36   end
-</span><span class="inferred1"><a name="line37"></a>37   
-</span><span class="marked0"><a name="line38"></a>38   it &quot;should have more total players than now playing&quot; do
-</span><span class="marked1"><a name="line39"></a>39     @server.players_now.should_not be_more_than(@server.players_total)
-</span><span class="inferred0"><a name="line40"></a>40   end
-</span><span class="inferred1"><a name="line41"></a>41 
-</span><span class="inferred0"><a name="line42"></a>42   
-</span><span class="inferred1"><a name="line43"></a>43 end
+<pre><span class="marked0"><a name="line1"></a> 1 require 'server'
+</span><span class="marked1"><a name="line2"></a> 2 require 'gameList'
+</span><span class="marked0"><a name="line3"></a> 3 require 'matchers'
+</span><span class="inferred1"><a name="line4"></a> 4 
+</span><span class="marked0"><a name="line5"></a> 5 describe Server do
+</span><span class="inferred1"><a name="line6"></a> 6   
+</span><span class="marked0"><a name="line7"></a> 7   before(:each) do
+</span><span class="marked1"><a name="line8"></a> 8     @server = Server.new(&quot;Mustafa&quot;, &quot;Half-Life 2&quot;, 32, &quot;de_zealot&quot;)
+</span><span class="inferred0"><a name="line9"></a> 9   end
+</span><span class="inferred1"><a name="line10"></a>10   
+</span><span class="marked0"><a name="line11"></a>11   it &quot;should have game from games list&quot; do
+</span><span class="marked1"><a name="line12"></a>12     gl = GameList.new
+</span><span class="marked0"><a name="line13"></a>13     names = []
+</span><span class="marked1"><a name="line14"></a>14     gl.games.each do |game|
+</span><span class="marked0"><a name="line15"></a>15       names &lt;&lt; game.name
+</span><span class="inferred1"><a name="line16"></a>16     end
+</span><span class="marked0"><a name="line17"></a>17     @server.game.should be_from_list(names)
+</span><span class="inferred1"><a name="line18"></a>18     #names.should include(@server.game)
+</span><span class="inferred0"><a name="line19"></a>19   end
+</span><span class="inferred1"><a name="line20"></a>20 
+</span><span class="marked0"><a name="line21"></a>21   it &quot;should rasie error if there is no game for server&quot; do
+</span><span class="marked1"><a name="line22"></a>22     lambda { Server.new(&quot;Mustafa&quot;, &quot;No game in List&quot;, 32, &quot;de_zealot&quot;) }.should raise_error
+</span><span class="inferred0"><a name="line23"></a>23   end
+</span><span class="inferred1"><a name="line24"></a>24 
+</span><span class="marked0"><a name="line25"></a>25   it &quot;should be able to add integer from string for players_total&quot; do
+</span><span class="marked1"><a name="line26"></a>26     server = Server.new(&quot;Mustafa&quot;, &quot;Half-Life 2&quot;, &quot;32&quot;, &quot;de_zealot&quot;)
+</span><span class="marked0"><a name="line27"></a>27     server.players_total.should be_eql(32)
+</span><span class="inferred1"><a name="line28"></a>28   end
+</span><span class="inferred0"><a name="line29"></a>29   
+</span><span class="marked1"><a name="line30"></a>30   it &quot;should raise error if players_total is not fixnum or string&quot; do
+</span><span class="marked0"><a name="line31"></a>31     lambda {Server.new(&quot;Mustafa&quot;, &quot;Half-Life 2&quot;, 10.5, &quot;de_zealot&quot;) }.should raise_error
+</span><span class="inferred1"><a name="line32"></a>32   end
+</span><span class="inferred0"><a name="line33"></a>33   
+</span><span class="marked1"><a name="line34"></a>34   it &quot;should not have more players than it can hold&quot; do
+</span><span class="marked0"><a name="line35"></a>35     @server.players_total.should be_more_than(@server.players_now)
+</span><span class="inferred1"><a name="line36"></a>36   end
+</span><span class="inferred0"><a name="line37"></a>37   
+</span><span class="marked1"><a name="line38"></a>38   it &quot;should have more total players than now playing&quot; do
+</span><span class="marked0"><a name="line39"></a>39     @server.players_now.should_not be_more_than(@server.players_total)
+</span><span class="inferred1"><a name="line40"></a>40   end
+</span><span class="inferred0"><a name="line41"></a>41 
+</span><span class="inferred1"><a name="line42"></a>42   
+</span><span class="inferred0"><a name="line43"></a>43 end
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

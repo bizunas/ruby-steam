@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Mon Nov 09 16:34:12 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 09 17:09:17 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,9 +571,9 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='gameList_spec_rb.html'>gameList_spec.rb</a>
         </td>
-      <td class='lines_total'><tt>82</tt>
+      <td class='lines_total'><tt>89</tt>
         </td>
-      <td class='lines_code'><tt>70</tt>
+      <td class='lines_code'><tt>57</tt>
         </td>
       <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
@@ -664,22 +664,29 @@ span.run100 {
 </span><span class="marked0"><a name="line64"></a>64     @game_list.to_s.should be_eql(to_string)
 </span><span class="inferred1"><a name="line65"></a>65   end
 </span><span class="inferred0"><a name="line66"></a>66   
-</span><span class="marked1"><a name="line67"></a>67   it &quot;should return false if it couldn't load_object&quot; do
-</span><span class="marked0"><a name="line68"></a>68     File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
-</span><span class="marked1"><a name="line69"></a>69     @game_list.load_object.should be_false
-</span><span class="marked0"><a name="line70"></a>70     File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
-</span><span class="inferred1"><a name="line71"></a>71   end
-</span><span class="inferred0"><a name="line72"></a>72   
-</span><span class="marked1"><a name="line73"></a>73   it &quot;should save object after adding new user&quot; do
-</span><span class="marked0"><a name="line74"></a>74     File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
-</span><span class="marked1"><a name="line75"></a>75     gameList = GameList.new
-</span><span class="marked0"><a name="line76"></a>76     gameList.add_game(&quot;Halo&quot;, 1, &quot;Fun game&quot;, 7.8, &quot;500$&quot;, &quot;none&quot;)
-</span><span class="marked1"><a name="line77"></a>77     gameList.games.length.should be_more_than(1)
-</span><span class="marked0"><a name="line78"></a>78     File.delete(&quot;wh.dat&quot;)
-</span><span class="marked1"><a name="line79"></a>79     File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
-</span><span class="inferred0"><a name="line80"></a>80   end
-</span><span class="inferred1"><a name="line81"></a>81 end
-</span><span class="inferred0"><a name="line82"></a>82 
+</span><span class="inferred1"><a name="line67"></a>67   #it &quot;should return false if it couldn't load_object&quot; do
+</span><span class="inferred0"><a name="line68"></a>68   #  File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
+</span><span class="inferred1"><a name="line69"></a>69   #  @game_list.load_object.should be_false
+</span><span class="inferred0"><a name="line70"></a>70   #  File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
+</span><span class="inferred1"><a name="line71"></a>71   #end
+</span><span class="inferred0"><a name="line72"></a>72 
+</span><span class="inferred1"><a name="line73"></a>73   #it &quot;should save object if file exists&quot; do
+</span><span class="inferred0"><a name="line74"></a>74   #  File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
+</span><span class="inferred1"><a name="line75"></a>75   #  @game_list.add_game(&quot;Halo&quot;, 2, &quot;New game.Check it&quot;, 8.9, &quot;50$&quot;, &quot;none&quot;, &quot;none&quot;)
+</span><span class="inferred0"><a name="line76"></a>76   #  @game_list.load_object
+</span><span class="inferred1"><a name="line77"></a>77   #  File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
+</span><span class="inferred0"><a name="line78"></a>78   #end
+</span><span class="inferred1"><a name="line79"></a>79   
+</span><span class="inferred0"><a name="line80"></a>80   #it &quot;should save object after adding new game&quot; do
+</span><span class="inferred1"><a name="line81"></a>81   #  File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
+</span><span class="inferred0"><a name="line82"></a>82   #  gameList = GameList.new
+</span><span class="inferred1"><a name="line83"></a>83   #  gameList.add_game(&quot;Halo&quot;, 1, &quot;Fun game&quot;, 7.8, &quot;500$&quot;, &quot;none&quot;)
+</span><span class="inferred0"><a name="line84"></a>84   #  gameList.games.length.should be_more_than(1)
+</span><span class="inferred1"><a name="line85"></a>85   #  File.delete(&quot;wh.dat&quot;)
+</span><span class="inferred0"><a name="line86"></a>86   #  File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
+</span><span class="inferred1"><a name="line87"></a>87   #end
+</span><span class="inferred0"><a name="line88"></a>88 end
+</span><span class="inferred1"><a name="line89"></a>89 
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

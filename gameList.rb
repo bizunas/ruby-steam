@@ -12,8 +12,8 @@ class GameList
     load_object
   end
 
-  def add_game(name, status, description, rating, demo, url)
-    @games << Game.new(name, status, description, rating, demo, url)
+  def add_game(name, status, description, rating, cost, demo, url)
+    @games << Game.new(name, status, description, rating, cost, demo, url)
     save_object
   end
   

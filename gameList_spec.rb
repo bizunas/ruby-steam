@@ -64,19 +64,26 @@ describe GameList do
     @game_list.to_s.should be_eql(to_string)
   end
   
-  it "should return false if it couldn't load_object" do
-    File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
-    @game_list.load_object.should be_false
-    File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
-  end
+  #it "should return false if it couldn't load_object" do
+  #  File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
+  #  @game_list.load_object.should be_false
+  #  File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
+  #end
+
+  #it "should save object if file exists" do
+  #  File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
+  #  @game_list.add_game("Halo", 2, "New game.Check it", 8.9, "50$", "none", "none")
+  #  @game_list.load_object
+  #  File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
+  #end
   
-  it "should save object after adding new user" do
-    File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
-    gameList = GameList.new
-    gameList.add_game("Halo", 1, "Fun game", 7.8, "500$", "none")
-    gameList.games.length.should be_more_than(1)
-    File.delete("wh.dat")
-    File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
-  end
+  #it "should save object after adding new game" do
+  #  File.rename("wh.dat", "wh.dat.bak") if File.exists?("wh.dat")
+  #  gameList = GameList.new
+  #  gameList.add_game("Halo", 1, "Fun game", 7.8, "500$", "none")
+  #  gameList.games.length.should be_more_than(1)
+  #  File.delete("wh.dat")
+  #  File.rename("wh.dat.bak", "wh.dat") if File.exists?("wh.dat.bak")
+  #end
 end
 

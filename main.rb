@@ -101,8 +101,8 @@ if sel == 1
           demo = STDIN.gets.chomp
           puts "Please enter game url:"
           url = STDIN.gets.chomp
-          game = Game.new(name, status, description, rating, cost, demo, url)
-          gameList.add_game(game)
+          #game = Game.new(name, status, description, rating, cost, demo, url)
+          gameList.add_game(name, status, description, rating, cost, demo, url)
         elsif s == 2
           puts "Enter user id you want to delete: "
           gameList.delete_game(STDIN.gets.to_i)
