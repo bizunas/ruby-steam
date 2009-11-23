@@ -70,4 +70,37 @@ describe LoginForm do
       @lf.password.should be_eql(ARGV[1])
     end
   end
+  
+  it "should let user enter username if it wasnt specified earlier" do
+    user = 'foo'
+    STDIN.stub(:gets).and_return('foo')
+    lf = LoginForm.new(nil,nil,1)
+    lf.set_username("",nil)
+    lf.name.should be_eql(user)
+  end
+  
+  it "should let user enter password if it wasnt specified earlier" do
+    pass = 'foo'
+    STDIN.stub(:gets).and_return('foo')
+    lf = LoginForm.new(nil,nil,1)
+    lf.set_password("",nil)
+    lf.password.should be_eql(pass)
+  end
+  
+  it "should let user enter surname if it wasnt specified earlier" do
+    surname = 'foo'
+    STDIN.stub(:gets).and_return('foo')
+    lf = LoginForm.new(nil,nil,1)
+    lf.set_surname("",nil)
+    lf.surname.should be_eql(surname)
+  end
+  
+  
+  it "should let administrator enter privileges for user if it wasnt specified earlier" do
+    priv = 0
+    STDIN.stub(:gets).and_return("0")
+    lf = LoginForm.new(nil,nil,1)
+    lf.set_privileges("",nil)
+    lf.privileges.should be_eql(priv)
+  end
 end

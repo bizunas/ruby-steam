@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Mon Nov 09 17:09:17 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Mon Nov 23 14:13:25 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -571,9 +571,9 @@ span.run100 {
     </thead>
   <tbody><tr class='light'><td><a href='gameList_spec_rb.html'>gameList_spec.rb</a>
         </td>
-      <td class='lines_total'><tt>89</tt>
+      <td class='lines_total'><tt>94</tt>
         </td>
-      <td class='lines_code'><tt>57</tt>
+      <td class='lines_code'><tt>71</tt>
         </td>
       <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
@@ -598,95 +598,100 @@ span.run100 {
       </tr>
     </tbody>
   </table>
-<pre><span class="marked1"><a name="line1"></a> 1 require 'gameList'
-</span><span class="marked0"><a name="line2"></a> 2 require 'matchers'
-</span><span class="inferred1"><a name="line3"></a> 3 
-</span><span class="marked0"><a name="line4"></a> 4 describe GameList do
-</span><span class="marked1"><a name="line5"></a> 5   before(:each) do
-</span><span class="marked0"><a name="line6"></a> 6     @game_list = GameList.new
-</span><span class="inferred1"><a name="line7"></a> 7   end
-</span><span class="inferred0"><a name="line8"></a> 8 
-</span><span class="marked1"><a name="line9"></a> 9   it &quot;should not be empty&quot; do
-</span><span class="marked0"><a name="line10"></a>10     @game_list.games.should_not be_empty
-</span><span class="inferred1"><a name="line11"></a>11   end
-</span><span class="inferred0"><a name="line12"></a>12 
-</span><span class="marked1"><a name="line13"></a>13   it &quot;should have at least 2 games&quot; do
-</span><span class="marked0"><a name="line14"></a>14     @game_list.games.should have_at_least(2).items
-</span><span class="inferred1"><a name="line15"></a>15   end
-</span><span class="inferred0"><a name="line16"></a>16 
-</span><span class="marked1"><a name="line17"></a>17   it &quot;should have valid data for game&quot; do
-</span><span class="marked0"><a name="line18"></a>18     @game_list.games.each do |game|
-</span><span class="marked1"><a name="line19"></a>19       game.status.should be_kind_of(Fixnum)
-</span><span class="marked0"><a name="line20"></a>20       game.description.should be_kind_of(String)
-</span><span class="marked1"><a name="line21"></a>21       game.rating.should be_kind_of(Float)
-</span><span class="marked0"><a name="line22"></a>22       game.demo_url.should be_kind_of(String)
-</span><span class="marked1"><a name="line23"></a>23       game.url.should be_kind_of(String)
-</span><span class="inferred0"><a name="line24"></a>24     end
-</span><span class="inferred1"><a name="line25"></a>25   end
-</span><span class="inferred0"><a name="line26"></a>26   
-</span><span class="marked1"><a name="line27"></a>27   it &quot;should be able to delete game&quot; do
-</span><span class="marked0"><a name="line28"></a>28     @game_list.delete_game(0)
-</span><span class="marked1"><a name="line29"></a>29     @game_list.games.length.should be_eql(2)
-</span><span class="inferred0"><a name="line30"></a>30   end
-</span><span class="inferred1"><a name="line31"></a>31   
-</span><span class="marked0"><a name="line32"></a>32   it &quot;should raise error if there is no id for game&quot; do
-</span><span class="marked1"><a name="line33"></a>33     ((@game_list.games.length+1..@game_list.games.length+10).to_a).each {|v| lambda {@game_list.delete_game(v)}.should raise_error}
-</span><span class="inferred0"><a name="line34"></a>34   end
-</span><span class="inferred1"><a name="line35"></a>35   
-</span><span class="marked0"><a name="line36"></a>36   it &quot;should be able to print games from the list with filter of status 0&quot; do
-</span><span class="marked1"><a name="line37"></a>37     to_string = &quot;Games list:\n&quot;
-</span><span class="marked0"><a name="line38"></a>38     @game_list.games.each_index do |i|
-</span><span class="marked1"><a name="line39"></a>39       if !(true &amp;&amp; @game_list.games[i].status == 0)
-</span><span class="marked0"><a name="line40"></a>40         to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
-</span><span class="marked1"><a name="line41"></a>41         to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
-</span><span class="inferred0"><a name="line42"></a>42       end
-</span><span class="inferred1"><a name="line43"></a>43     end
-</span><span class="marked0"><a name="line44"></a>44     @game_list.print_games(true).should be_eql(to_string)
-</span><span class="inferred1"><a name="line45"></a>45   end
-</span><span class="inferred0"><a name="line46"></a>46   
-</span><span class="marked1"><a name="line47"></a>47   it &quot;should be able to print all games from the list without filter of status 0&quot; do
-</span><span class="marked0"><a name="line48"></a>48     to_string = &quot;Games list:\n&quot;
-</span><span class="marked1"><a name="line49"></a>49     @game_list.games.each_index do |i|
-</span><span class="marked0"><a name="line50"></a>50       if !(false &amp;&amp; @game_list.games[i].status == 0)
-</span><span class="marked1"><a name="line51"></a>51         to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
-</span><span class="marked0"><a name="line52"></a>52         to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
-</span><span class="inferred1"><a name="line53"></a>53       end
-</span><span class="inferred0"><a name="line54"></a>54     end
-</span><span class="marked1"><a name="line55"></a>55     @game_list.print_games(false).should be_eql(to_string)
-</span><span class="inferred0"><a name="line56"></a>56   end
-</span><span class="inferred1"><a name="line57"></a>57   
-</span><span class="marked0"><a name="line58"></a>58   it &quot;should return string of object&quot; do
-</span><span class="marked1"><a name="line59"></a>59     to_string = &quot;Games list:\n&quot;
-</span><span class="marked0"><a name="line60"></a>60     @game_list.games.each_index do |i|
-</span><span class="marked1"><a name="line61"></a>61       to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
-</span><span class="marked0"><a name="line62"></a>62       to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
-</span><span class="inferred1"><a name="line63"></a>63     end
-</span><span class="marked0"><a name="line64"></a>64     @game_list.to_s.should be_eql(to_string)
-</span><span class="inferred1"><a name="line65"></a>65   end
-</span><span class="inferred0"><a name="line66"></a>66   
-</span><span class="inferred1"><a name="line67"></a>67   #it &quot;should return false if it couldn't load_object&quot; do
-</span><span class="inferred0"><a name="line68"></a>68   #  File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
-</span><span class="inferred1"><a name="line69"></a>69   #  @game_list.load_object.should be_false
-</span><span class="inferred0"><a name="line70"></a>70   #  File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
-</span><span class="inferred1"><a name="line71"></a>71   #end
-</span><span class="inferred0"><a name="line72"></a>72 
-</span><span class="inferred1"><a name="line73"></a>73   #it &quot;should save object if file exists&quot; do
-</span><span class="inferred0"><a name="line74"></a>74   #  File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
-</span><span class="inferred1"><a name="line75"></a>75   #  @game_list.add_game(&quot;Halo&quot;, 2, &quot;New game.Check it&quot;, 8.9, &quot;50$&quot;, &quot;none&quot;, &quot;none&quot;)
-</span><span class="inferred0"><a name="line76"></a>76   #  @game_list.load_object
-</span><span class="inferred1"><a name="line77"></a>77   #  File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
-</span><span class="inferred0"><a name="line78"></a>78   #end
-</span><span class="inferred1"><a name="line79"></a>79   
-</span><span class="inferred0"><a name="line80"></a>80   #it &quot;should save object after adding new game&quot; do
-</span><span class="inferred1"><a name="line81"></a>81   #  File.rename(&quot;wh.dat&quot;, &quot;wh.dat.bak&quot;) if File.exists?(&quot;wh.dat&quot;)
-</span><span class="inferred0"><a name="line82"></a>82   #  gameList = GameList.new
-</span><span class="inferred1"><a name="line83"></a>83   #  gameList.add_game(&quot;Halo&quot;, 1, &quot;Fun game&quot;, 7.8, &quot;500$&quot;, &quot;none&quot;)
-</span><span class="inferred0"><a name="line84"></a>84   #  gameList.games.length.should be_more_than(1)
-</span><span class="inferred1"><a name="line85"></a>85   #  File.delete(&quot;wh.dat&quot;)
-</span><span class="inferred0"><a name="line86"></a>86   #  File.rename(&quot;wh.dat.bak&quot;, &quot;wh.dat&quot;) if File.exists?(&quot;wh.dat.bak&quot;)
-</span><span class="inferred1"><a name="line87"></a>87   #end
-</span><span class="inferred0"><a name="line88"></a>88 end
-</span><span class="inferred1"><a name="line89"></a>89 
+<pre><span class="marked0"><a name="line1"></a> 1 require 'gameList'
+</span><span class="marked1"><a name="line2"></a> 2 require 'matchers'
+</span><span class="inferred0"><a name="line3"></a> 3 
+</span><span class="marked1"><a name="line4"></a> 4 describe GameList do
+</span><span class="marked0"><a name="line5"></a> 5   before(:each) do
+</span><span class="marked1"><a name="line6"></a> 6     @game_list = GameList.new
+</span><span class="inferred0"><a name="line7"></a> 7   end
+</span><span class="inferred1"><a name="line8"></a> 8 
+</span><span class="marked0"><a name="line9"></a> 9   it &quot;should not be empty&quot; do
+</span><span class="marked1"><a name="line10"></a>10     @game_list.games.should_not be_empty
+</span><span class="inferred0"><a name="line11"></a>11   end
+</span><span class="inferred1"><a name="line12"></a>12 
+</span><span class="marked0"><a name="line13"></a>13   it &quot;should have at least 2 games&quot; do
+</span><span class="marked1"><a name="line14"></a>14     @game_list.games.should have_at_least(2).items
+</span><span class="inferred0"><a name="line15"></a>15   end
+</span><span class="inferred1"><a name="line16"></a>16 
+</span><span class="marked0"><a name="line17"></a>17   it &quot;should have valid data for game&quot; do
+</span><span class="marked1"><a name="line18"></a>18     @game_list.games.each do |game|
+</span><span class="marked0"><a name="line19"></a>19       game.status.should be_kind_of(Fixnum)
+</span><span class="marked1"><a name="line20"></a>20       game.description.should be_kind_of(String)
+</span><span class="marked0"><a name="line21"></a>21       game.rating.should be_kind_of(Float)
+</span><span class="marked1"><a name="line22"></a>22       game.demo_url.should be_kind_of(String)
+</span><span class="marked0"><a name="line23"></a>23       game.url.should be_kind_of(String)
+</span><span class="inferred1"><a name="line24"></a>24     end
+</span><span class="inferred0"><a name="line25"></a>25   end
+</span><span class="inferred1"><a name="line26"></a>26   
+</span><span class="marked0"><a name="line27"></a>27   it &quot;should be able to delete game&quot; do
+</span><span class="marked1"><a name="line28"></a>28     len = @game_list.games.length
+</span><span class="marked0"><a name="line29"></a>29     @game_list.delete_game(0)
+</span><span class="marked1"><a name="line30"></a>30     @game_list.games.length.should be_eql(len-1)
+</span><span class="inferred0"><a name="line31"></a>31   end
+</span><span class="inferred1"><a name="line32"></a>32   
+</span><span class="marked0"><a name="line33"></a>33   it &quot;should raise error if there is no id for game&quot; do
+</span><span class="marked1"><a name="line34"></a>34     ((@game_list.games.length+1..@game_list.games.length+10).to_a).each {|v| lambda {@game_list.delete_game(v)}.should raise_error}
+</span><span class="inferred0"><a name="line35"></a>35   end
+</span><span class="inferred1"><a name="line36"></a>36   
+</span><span class="marked0"><a name="line37"></a>37   it &quot;should be able to print games from the list with filter of status 0&quot; do
+</span><span class="marked1"><a name="line38"></a>38     to_string = &quot;Games list:\n&quot;
+</span><span class="marked0"><a name="line39"></a>39     @game_list.games.each_index do |i|
+</span><span class="marked1"><a name="line40"></a>40       if !(true &amp;&amp; @game_list.games[i].status == 0)
+</span><span class="marked0"><a name="line41"></a>41         to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
+</span><span class="marked1"><a name="line42"></a>42         to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
+</span><span class="inferred0"><a name="line43"></a>43       end
+</span><span class="inferred1"><a name="line44"></a>44     end
+</span><span class="marked0"><a name="line45"></a>45     @game_list.print_games(true).should be_eql(to_string)
+</span><span class="inferred1"><a name="line46"></a>46   end
+</span><span class="inferred0"><a name="line47"></a>47   
+</span><span class="inferred1"><a name="line48"></a>48   #it &quot;should be able to print all games from the list without filter of status 0&quot; do
+</span><span class="inferred0"><a name="line49"></a>49   #  to_string = &quot;Games list:\n&quot;
+</span><span class="inferred1"><a name="line50"></a>50   #  @game_list.games.each_index do |i|
+</span><span class="inferred0"><a name="line51"></a>51   #    if !(false &amp;&amp; @game_list.games[i].status == 0)
+</span><span class="inferred1"><a name="line52"></a>52   #      to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
+</span><span class="inferred0"><a name="line53"></a>53   #      to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
+</span><span class="inferred1"><a name="line54"></a>54   #    end
+</span><span class="inferred0"><a name="line55"></a>55   #  end
+</span><span class="inferred1"><a name="line56"></a>56   #  @game_list.print_games(false).should be_eql(to_string)
+</span><span class="inferred0"><a name="line57"></a>57   #end
+</span><span class="inferred1"><a name="line58"></a>58   
+</span><span class="marked0"><a name="line59"></a>59   it &quot;should return string of object&quot; do
+</span><span class="marked1"><a name="line60"></a>60     to_string = &quot;Games list:\n&quot;
+</span><span class="marked0"><a name="line61"></a>61     @game_list.games.each_index do |i|
+</span><span class="marked1"><a name="line62"></a>62       to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
+</span><span class="marked0"><a name="line63"></a>63       to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
+</span><span class="inferred1"><a name="line64"></a>64     end
+</span><span class="marked0"><a name="line65"></a>65     @game_list.to_s.should be_eql(to_string)
+</span><span class="inferred1"><a name="line66"></a>66   end
+</span><span class="inferred0"><a name="line67"></a>67   
+</span><span class="marked1"><a name="line68"></a>68   it &quot;should return false if it couldn't load object&quot; do
+</span><span class="marked0"><a name="line69"></a>69     file = &quot;wh.dat&quot;
+</span><span class="marked1"><a name="line70"></a>70     File.rename(file, file + &quot;.bak&quot;) if File.exists?(file)
+</span><span class="marked0"><a name="line71"></a>71     @game_list.load().should be_instance_of(Array)
+</span><span class="marked1"><a name="line72"></a>72     File.rename(file + &quot;.bak&quot;, file) if File.exists?(file + &quot;.bak&quot;)
+</span><span class="inferred0"><a name="line73"></a>73   end
+</span><span class="inferred1"><a name="line74"></a>74 
+</span><span class="marked0"><a name="line75"></a>75   it &quot;should save object if file exists&quot; do
+</span><span class="marked1"><a name="line76"></a>76     file = &quot;wh.dat&quot;
+</span><span class="marked0"><a name="line77"></a>77     File.rename(file, file + &quot;.bak&quot;) if File.exists?(file)
+</span><span class="marked1"><a name="line78"></a>78     @game_list.add_game(&quot;Halo&quot;, 2, &quot;New game.Check it&quot;, 8.9, &quot;50$&quot;, &quot;none&quot;, &quot;none&quot;)
+</span><span class="marked0"><a name="line79"></a>79     @game_list.save(@game_list.games)
+</span><span class="marked1"><a name="line80"></a>80     File.rename(file + &quot;.bak&quot;, file) if File.exists?(file + &quot;.bak&quot;)
+</span><span class="inferred0"><a name="line81"></a>81   end
+</span><span class="inferred1"><a name="line82"></a>82   
+</span><span class="marked0"><a name="line83"></a>83   it &quot;should save object after adding new game&quot; do
+</span><span class="marked1"><a name="line84"></a>84     file = &quot;wh.dat&quot;
+</span><span class="marked0"><a name="line85"></a>85     File.rename(file, file + &quot;.bak&quot;) if File.exists?(file)
+</span><span class="marked1"><a name="line86"></a>86     gameList = GameList.new
+</span><span class="marked0"><a name="line87"></a>87     gameList.add_game(&quot;Halo&quot;, 1, &quot;Fun game&quot;, 7.8, &quot;500$&quot;, &quot;none&quot;, &quot;none&quot;)
+</span><span class="marked1"><a name="line88"></a>88     gameList.save(gameList.games)
+</span><span class="marked0"><a name="line89"></a>89     gameList.games.length.should be_more_than(1)
+</span><span class="marked1"><a name="line90"></a>90     File.delete(file)
+</span><span class="marked0"><a name="line91"></a>91     File.rename(file + &quot;.bak&quot;, file) if File.exists?(file + &quot;.bak&quot;)
+</span><span class="inferred1"><a name="line92"></a>92   end
+</span><span class="inferred0"><a name="line93"></a>93 end
+</span><span class="inferred1"><a name="line94"></a>94 
 </span></pre><hr/>
     <p>Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'>rcov code coverage analysis tool for Ruby</a>
    version 0.8.1.2.</p>

@@ -1,5 +1,4 @@
 require 'account'
-require 'highline/import'
 
 class LoginForm
   attr_accessor :name, :surname, :password, :sex, :privileges
@@ -29,7 +28,7 @@ class LoginForm
       @password = ARGV[1]
     else
       STDOUT.flush
-      @password = ask(msg) { |q| q.echo = "*" }
+      @password = STDIN.gets.chomp
     end
   end
 

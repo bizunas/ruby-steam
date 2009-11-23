@@ -34,16 +34,17 @@ if sel == 1
       STDOUT.flush
       sel = STDIN.gets.chomp.to_i
       
+      case sel
       #List users
-      if sel == 1
+      when 1
         puts accounts.to_s
       #Add user
-      elsif sel == 2
+      when 2
         rf = LoginForm.new(nil,nil,1)
         rf.set_username("Please enter user's name:")
         while true do
           rf.set_password("Please enter user's password:")
-          password = ask("Please enter your password again:") { |q| q.echo = "*" }
+          password = STDIN.gets.chomp
           if rf.password == password
             break
           end
@@ -70,8 +71,9 @@ if sel == 1
         end
         rf.set_privileges("Please enter user's privileges(0 - admin, 1 - leecher):")
         accounts.add_user(rf.name, rf.password, rf.surname, rf.sex, rf.privileges)
+        accounts.save(accounts.accounts)
       #List games
-      elsif sel == 3
+      when 3
         gl = GameList.new
         puts gl.print_games(false)
         puts "\n"
@@ -80,7 +82,7 @@ if sel == 1
         acc.cart.add_game(game) if game != 0
         puts acc.cart.to_s
       #Game options
-      elsif sel == 4
+      when 4
         gameList = GameList.new
         puts gameList
         puts "\n"
@@ -103,15 +105,17 @@ if sel == 1
           url = STDIN.gets.chomp
           #game = Game.new(name, status, description, rating, cost, demo, url)
           gameList.add_game(name, status, description, rating, cost, demo, url)
+          gameList.save(gameList.games)
         elsif s == 2
           puts "Enter user id you want to delete: "
           gameList.delete_game(STDIN.gets.to_i)
+          gameList.save(gameList.games)
         end
       #print news
-      elsif sel == 5
+      when 5
         puts News.new.to_s
       #add a new
-      elsif sel == 6
+      when 6
           puts "Please enter title:"
           title = STDIN.gets.chomp
           puts "Please enter content of new:"
@@ -123,8 +127,10 @@ if sel == 1
           news = News.new
           news.add_new(title, new, author, published_on)
       #Exit
-      elsif sel == 0
+      when 0
         break
+      else
+        puts "try again"
       end
     end
   #leecher
@@ -159,7 +165,7 @@ elsif sel == 2
   end
   
   lf.set_password("Please enter new password:")
-  password = ask("Please enter your password again:") { |q| q.echo = "*" }
+  password = STDIN.gets.chomp
   if (lf.password <=> password) == 0
     accList = AccountList.new
     accList.add_user(lf.name, lf.surname, lf.password, lf.sex, 0)

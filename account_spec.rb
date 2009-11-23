@@ -3,6 +3,7 @@ require 'spec'
 require 'account'
 require 'accountList'
 require 'loginForm'
+require 'matchers'
 
 describe Account do
   before(:each) do
@@ -92,5 +93,12 @@ describe Account do
     lambda {
       @account.add_money("-10")
     }.should_not change(@account, :money)
+  end
+  
+  it "should be from an AccountList" do
+    accList = AccountList.new
+    acc = Account.new("Vardenis", "a", "Pavardenis", "vyras", 0)
+    accList.add_account(acc)
+    acc.should be_from_list(accList.accounts)
   end
 end
