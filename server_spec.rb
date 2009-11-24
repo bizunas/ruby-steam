@@ -15,10 +15,9 @@ describe Server do
       names << game.name
     end
     @server.game.should be_from_list(names)
-    #names.should include(@server.game)
   end
 
-  it "should rasie error if there is no game for server" do
+  it "should raise error if there is no game for server" do
     lambda { Server.new("Mustafa", "No game in List", 32, "de_zealot") }.should raise_error
   end
 
@@ -32,11 +31,11 @@ describe Server do
   end
   
   it "should not have more players than it can hold" do
-    @server.players_total.should be_more_than(@server.players_now)
+    @server.players_total.should have_more_players_than(@server.players_now)
   end
   
   it "should have more total players than now playing" do
-    @server.players_now.should_not be_more_than(@server.players_total)
+    @server.players_now.should_not have_more_players_than(@server.players_total)
   end
 
   

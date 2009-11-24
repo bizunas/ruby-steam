@@ -16,8 +16,13 @@ end
 #Login
 if sel == 1
   lf = LoginForm.new
-  lf.set_username("Please enter your name:")
-  lf.set_password("Please enter your password:")
+  puts "Please enter your name:"
+  user = STDIN.gets.chomp
+  lf.set_username(user)
+  
+  puts "Please enter your password:"
+  pass = STDIN.gets.chomp
+  lf.set_password(pass)
   accounts = AccountList.new
   
   acc = accounts.get_user(lf.name, lf.password)  
@@ -32,7 +37,7 @@ if sel == 1
     while true do 
       puts "Select action you want to do:\n1.\tList users\n2.\tAdd user.\n3.\tList games\n4.\tGame options\n5.\tList News\n0.\tExit\n"
       STDOUT.flush
-      sel = STDIN.gets.chomp.to_i
+      sel = STDIN.gets.to_i
       
       case sel
       #List users
@@ -41,15 +46,24 @@ if sel == 1
       #Add user
       when 2
         rf = LoginForm.new(nil,nil,1)
-        rf.set_username("Please enter user's name:")
+        
+        puts "Please enter user's name:"
+        rf.name = STDIN.gets.chomp
+        
         while true do
-          rf.set_password("Please enter user's password:")
+          puts "Please enter user's password:"
+          pass = STDIN.gets.chomp
+          rf.set_password(pass)
+          puts "RE-enter password:"
           password = STDIN.gets.chomp
           if rf.password == password
             break
           end
         end
-        rf.set_surname("Please enter user's surname:")
+        
+        puts "Please enter your surname:"
+        rf.surname = STDIN.gets.chomp
+        
         msg = "Please enter your sex:\n1. Vyras\n2. Moteris\n"
         puts msg
         while true do
@@ -69,7 +83,10 @@ if sel == 1
             next
           end
         end
-        rf.set_privileges("Please enter user's privileges(0 - admin, 1 - leecher):")
+        
+        puts "Please enter user's privileges(0 - admin, 1 - leecher):"
+        rf.set_privileges(STDIN.gets.to_i)
+        
         accounts.add_user(rf.name, rf.password, rf.surname, rf.sex, rf.privileges)
         accounts.save(accounts.accounts)
       #List games
@@ -144,11 +161,15 @@ if sel == 1
 #Registration
 elsif sel == 2
   lf = LoginForm.new
-  lf.set_username("Please enter your name:")
-  lf.set_surname("Please enter your surname:")
+  
+  puts "Please enter your name:"
+  lf.set_username(STDIN.gets.chomp)
+  
+  puts "Please enter your surname:"
+  lf.surname = STDIN.gets.chomp 
 
-  msg = "Please enter your sex:\n1. Vyras\n2. Moteris\n"
-  puts msg
+  puts"Please enter your sex:\n1. Vyras\n2. Moteris\n"
+  
   while true do
     STDOUT.flush
     sel = gets.chomp.to_i
@@ -164,7 +185,9 @@ elsif sel == 2
     end
   end
   
-  lf.set_password("Please enter new password:")
+  puts "Please enter new password:"
+  lf.set_password(STDIN.gets.chomp)
+  
   password = STDIN.gets.chomp
   if (lf.password <=> password) == 0
     accList = AccountList.new

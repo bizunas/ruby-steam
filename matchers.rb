@@ -4,6 +4,12 @@ Spec::Matchers.define :be_from_list do |items|
   end
 end
 
+Spec::Matchers.define :have_more_players_than do |expected|
+  match do |actual|
+    actual > expected
+  end
+end
+
 Spec::Matchers.define :be_more_than do |expected|
   match do |actual|
     actual > expected

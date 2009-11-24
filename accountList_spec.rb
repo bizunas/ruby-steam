@@ -29,13 +29,7 @@ describe AccountList do
     @account_list.get_user("Admin", "root").should be_kind_of(Account)
   end
   
-  it "should not contain non existing user" do
-    not_registered_account = Account.new("bbbbbbbbbbbbbb", "cccccccccccc", "asdasd", "Vyras")
-    @accounts.should_not include(not_registered_account)
-  end
-  
   it "should return nil object if there is no user in DB" do
-    not_registered_account = Account.new("bbbbbbbbbbbbbb", "cccccccccccc", "asdasd", "Vyras")
     @account_list.get_user("bbbbbbbbbbbbbb", "cccccccccccc").should be_nil
   end
   

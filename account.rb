@@ -17,7 +17,7 @@ class Account
     @money = 0
   end
   
-  def make_pos_int(sum)
+  def make_abs_int(sum)
     if sum.class == Fixnum
       if sum < 0 
         sum = 0
@@ -32,12 +32,12 @@ class Account
   end
   
   def add_money(sum)
-    sum = make_pos_int(sum)
+    sum = make_abs_int(sum)
     @money += sum
   end
   
   def sub_money(sum)
-    sum = make_pos_int(sum)
+    sum = make_abs_int(sum)
     if sum > @money
       raise "not enough money in account"
     end

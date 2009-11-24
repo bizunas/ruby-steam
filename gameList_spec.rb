@@ -33,7 +33,7 @@ describe GameList do
   it "should raise error if there is no id for game" do
     ((@game_list.games.length+1..@game_list.games.length+10).to_a).each {|v| lambda {@game_list.delete_game(v)}.should raise_error}
   end
-  
+
   it "should be able to print games from the list with filter of status 0" do
     to_string = "Games list:\n"
     @game_list.games.each_index do |i|
@@ -45,16 +45,16 @@ describe GameList do
     @game_list.print_games(true).should be_eql(to_string)
   end
   
-  #it "should be able to print all games from the list without filter of status 0" do
-  #  to_string = "Games list:\n"
-  #  @game_list.games.each_index do |i|
-  #    if !(false && @game_list.games[i].status == 0)
-  #      to_string << "-------#{i+1}--------\n"
-  #      to_string << "#{@game_list.games[i].to_s}"
-  #    end
-  #  end
-  #  @game_list.print_games(false).should be_eql(to_string)
-  #end
+  it "should be able to print all games from the list without filter of status 0" do
+    to_string = "Games list:\n"
+    @game_list.games.each_index do |i|
+      if !(false && @game_list.games[i].status == 0)
+        to_string << "-------#{i+1}--------\n"
+        to_string << "#{@game_list.games[i].to_s}"
+      end
+    end
+    @game_list.print_games(false).should be_eql(to_string)
+  end
   
   it "should return string of object" do
     to_string = "Games list:\n"

@@ -9,46 +9,24 @@ class LoginForm
     @arg = arg
   end
 
-  def set_username(msg, name = nil)
+  def set_username(name = nil)
     if name != nil then
       @name = name
     elsif(ARGV.length > 0 && @arg == 0) then
-      @name = ARGV[0]
-    else
-      puts "#{msg}"
-      STDOUT.flush
-      @name = STDIN.gets.chomp
+      @name = ARGV[1]
     end
   end
 
-  def set_password(msg, password = nil)
+  def set_password(password = nil)
     if password != nil
       @password = password
     elsif(ARGV.length > 1 && @arg == 0)
-      @password = ARGV[1]
-    else
-      STDOUT.flush
-      @password = STDIN.gets.chomp
-    end
-  end
-
-  def set_surname(msg, surname = nil)
-    if surname != nil
-      @surname = surname
-    else
-      puts "#{msg}"
-      STDOUT.flush
-      @surname = STDIN.gets.chomp
+      @password = ARGV[2]
     end
   end
   
-  def set_privileges(msg, priv = nil)
+  def set_privileges(priv = nil)
     if priv != nil
-      @privileges = privileges_check(priv)
-    else
-      puts "#{msg}"
-      STDOUT.flush
-      priv = STDIN.gets.chomp
       @privileges = privileges_check(priv)
     end
   end

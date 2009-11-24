@@ -553,7 +553,7 @@ span.run100 {
 </style>
     </head>
   <body><h3>C0 code coverage information</h3>
-    <p>Generated on Mon Nov 23 14:13:25 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
+    <p>Generated on Wed Nov 25 00:55:26 +0200 2009 with <a href='http://eigenclass.org/hiki/rcov'>rcov 0.8.1.2</a>
       </p>
     <hr/>
     <pre><span class='marked0'>Code reported as executed by Ruby looks like this...
@@ -573,7 +573,7 @@ span.run100 {
         </td>
       <td class='lines_total'><tt>94</tt>
         </td>
-      <td class='lines_code'><tt>71</tt>
+      <td class='lines_code'><tt>81</tt>
         </td>
       <td><table cellspacing='0' cellpadding='0' align='right'><tr><td><tt class='coverage_total'>100.0%</tt>
               &nbsp;</td>
@@ -633,7 +633,7 @@ span.run100 {
 </span><span class="marked0"><a name="line33"></a>33   it &quot;should raise error if there is no id for game&quot; do
 </span><span class="marked1"><a name="line34"></a>34     ((@game_list.games.length+1..@game_list.games.length+10).to_a).each {|v| lambda {@game_list.delete_game(v)}.should raise_error}
 </span><span class="inferred0"><a name="line35"></a>35   end
-</span><span class="inferred1"><a name="line36"></a>36   
+</span><span class="inferred1"><a name="line36"></a>36 
 </span><span class="marked0"><a name="line37"></a>37   it &quot;should be able to print games from the list with filter of status 0&quot; do
 </span><span class="marked1"><a name="line38"></a>38     to_string = &quot;Games list:\n&quot;
 </span><span class="marked0"><a name="line39"></a>39     @game_list.games.each_index do |i|
@@ -645,16 +645,16 @@ span.run100 {
 </span><span class="marked0"><a name="line45"></a>45     @game_list.print_games(true).should be_eql(to_string)
 </span><span class="inferred1"><a name="line46"></a>46   end
 </span><span class="inferred0"><a name="line47"></a>47   
-</span><span class="inferred1"><a name="line48"></a>48   #it &quot;should be able to print all games from the list without filter of status 0&quot; do
-</span><span class="inferred0"><a name="line49"></a>49   #  to_string = &quot;Games list:\n&quot;
-</span><span class="inferred1"><a name="line50"></a>50   #  @game_list.games.each_index do |i|
-</span><span class="inferred0"><a name="line51"></a>51   #    if !(false &amp;&amp; @game_list.games[i].status == 0)
-</span><span class="inferred1"><a name="line52"></a>52   #      to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
-</span><span class="inferred0"><a name="line53"></a>53   #      to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
-</span><span class="inferred1"><a name="line54"></a>54   #    end
-</span><span class="inferred0"><a name="line55"></a>55   #  end
-</span><span class="inferred1"><a name="line56"></a>56   #  @game_list.print_games(false).should be_eql(to_string)
-</span><span class="inferred0"><a name="line57"></a>57   #end
+</span><span class="marked1"><a name="line48"></a>48   it &quot;should be able to print all games from the list without filter of status 0&quot; do
+</span><span class="marked0"><a name="line49"></a>49     to_string = &quot;Games list:\n&quot;
+</span><span class="marked1"><a name="line50"></a>50     @game_list.games.each_index do |i|
+</span><span class="marked0"><a name="line51"></a>51       if !(false &amp;&amp; @game_list.games[i].status == 0)
+</span><span class="marked1"><a name="line52"></a>52         to_string &lt;&lt; &quot;-------#{i+1}--------\n&quot;
+</span><span class="marked0"><a name="line53"></a>53         to_string &lt;&lt; &quot;#{@game_list.games[i].to_s}&quot;
+</span><span class="inferred1"><a name="line54"></a>54       end
+</span><span class="inferred0"><a name="line55"></a>55     end
+</span><span class="marked1"><a name="line56"></a>56     @game_list.print_games(false).should be_eql(to_string)
+</span><span class="inferred0"><a name="line57"></a>57   end
 </span><span class="inferred1"><a name="line58"></a>58   
 </span><span class="marked0"><a name="line59"></a>59   it &quot;should return string of object&quot; do
 </span><span class="marked1"><a name="line60"></a>60     to_string = &quot;Games list:\n&quot;
